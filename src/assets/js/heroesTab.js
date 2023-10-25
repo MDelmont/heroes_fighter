@@ -129,7 +129,10 @@ const updatePageDisplay = () => {
 
 // Initialisation du tableau et des boutons de navigation.
 export const createHeroesTab = () => {
-  const tableContainer = document.getElementById("tableContainer");
+  const tableContainer = document.createElement("div");
+  tableContainer.id = "tableContainer";
+  document.body.appendChild(tableContainer);
+
   const { table, tabBody } = createTable();
   tableContainer.appendChild(table);
 
