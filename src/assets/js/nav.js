@@ -7,6 +7,7 @@ export const creatNav = () => {
   for (const elem of pages) {
     let div = document.createElement("div");
     div.classList.add("title-page");
+    if ("characters" === elem)   div.classList.add("active");
     let a = document.createElement("a");
     a.href = `#${elem.replace(" ", "_")}`;
     a.className = "nav-btn";
