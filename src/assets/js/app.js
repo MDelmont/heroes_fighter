@@ -9,7 +9,6 @@ const makePage = () => {
   body.appendChild(nav);
 
   let heroesTab = createHeroesTab();
-  body.appendChild(heroesTab);
 };
 
 const makePageContent = (name) => {};
