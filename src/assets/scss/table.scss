@@ -38,6 +38,7 @@ table {
     }
     &:nth-child(7) {
       width: 50px;
+ 
     }
     &:nth-child(8) {
       width: 150px;
@@ -59,7 +60,26 @@ table {
   td {
     padding: 10px;
     border: 1px solid $textcolorhead;
-    text-align: center;
+
+    &:nth-child(2) {
+      text-align: center;
+    }
+    &:nth-child(3) {
+      text-align: center;
+    }
+    &:nth-child(4) {
+      text-align: center;
+    }
+    &:nth-child(5) {
+      text-align: center;
+    }
+    &:nth-child(6) {
+      text-align: center;
+    }
+    &:nth-child(7) {
+      text-align: center;
+ 
+    }
   }
 }
 #tableNav {
