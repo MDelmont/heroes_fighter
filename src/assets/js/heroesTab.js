@@ -129,9 +129,13 @@ const updatePageDisplay = () => {
 
 // Initialisation du tableau et des boutons de navigation.
 export const createHeroesTab = () => {
+  const main = document.querySelector("#content");
+  const tablePart = document.createElement("div");
+  tablePart.id = "tablePart";
   const tableContainer = document.createElement("div");
   tableContainer.id = "tableContainer";
-  document.body.appendChild(tableContainer);
+  tablePart.appendChild(tableContainer);
+  main.appendChild(tablePart);
 
   const { table, tabBody } = createTable();
   tableContainer.appendChild(table);
@@ -157,9 +161,13 @@ export const createHeroesTab = () => {
       nextButton.addEventListener("click", () =>
         handleNavigation("next", tabBody)
       );
-
+      const tableNav = document.createElement("div");
+      tableNav.id = "tableNav";
+      tableNav.appendChild(prevButton);
+      tableNav.appendChild(pageDisplay);
+      tableNav.appendChild(nextButton);
       // Insération juste après le tableau
-      tableContainer.after(prevButton, pageDisplay, nextButton);
+      tableContainer.after(tableNav);
     })
     .catch((error) => {
       console.log("Erreur lors de la création de la table", error);

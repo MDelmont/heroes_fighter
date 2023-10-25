@@ -14,5 +14,5 @@ export const creatNav = () => {
     div.appendChild(a);
     nav.appendChild(div);
   }
-  return nav;
+  document.body.appendChild(nav);
 };

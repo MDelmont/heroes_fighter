@@ -1,5 +1,6 @@
 import { makeButton } from "./button";
 export const selectHeroesPart = () => {
+  const main = document.querySelector("#content");
   let divCont = document.createElement("div");
 
   divCont.className = "Select-heroes-part";
@@ -16,7 +17,7 @@ export const selectHeroesPart = () => {
   divCont.appendChild(select2);
   divCont.appendChild(makeButton("Versus", "btn-standard", "Go"));
 
-  return divCont;
+  main.appendChild(divCont);
 };
 
 const makeSelectCont = () => {
