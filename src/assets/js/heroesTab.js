@@ -85,8 +85,9 @@ const handleNullValue = (value) => {
  * Gère la navigation entre les pages.
  *
  * @param {string} direction - La direction de la navigation ("prev" ou "next").
+ * @param {HTMLElement} tabBody - Le corps du tableau.
  */
-const handleNavigation = (direction) => {
+const handleNavigation = (direction, tabBody) => {
   const totalPages = Math.ceil(allCharacters.length / ITEMS_PER_PAGE);
 
   if (direction === "prev" && currentPage > 1) {
@@ -95,7 +96,7 @@ const handleNavigation = (direction) => {
     currentPage++;
   }
 
-  showPage(currentPage);
+  showPage(currentPage, tabBody);
   updatePageDisplay();
 };
 
@@ -103,8 +104,9 @@ const handleNavigation = (direction) => {
  * Affiche les personnages de la page spécifiée.
  *
  * @param {number} page - Le numéro de page à afficher.
+ * @param {HTMLElement} tabBody - Le corps du tableau.
  */
-const showPage = (page) => {
+const showPage = (page, tabBody) => {
   const startIndex = (page - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
 
@@ -126,31 +128,37 @@ const updatePageDisplay = () => {
 };
 
 // Initialisation du tableau et des boutons de navigation.
-const tableContainer = document.getElementById("tableContainer");
-const { table, tabBody } = createTable();
-tableContainer.appendChild(table);
+export const createHeroesTab = () => {
+  const tableContainer = document.getElementById("tableContainer");
+  const { table, tabBody } = createTable();
+  tableContainer.appendChild(table);
 
-data()
-  .then((response) => {
-    allCharacters = response.results;
+  data()
+    .then((response) => {
+      allCharacters = response.results;
 
-    showPage(1);
+      showPage(1, tabBody);
 
-    // Création de l'affichage de la page et des boutons de navigation.
-    pageDisplay = document.createElement("span");
-    updatePageDisplay();
+      // Création de l'affichage de la page et des boutons de navigation.
+      pageDisplay = document.createElement("span");
+      updatePageDisplay();
 
-    const prevButton = document.createElement("button");
-    prevButton.innerText = "Précédent";
-    prevButton.addEventListener("click", () => handleNavigation("prev"));
+      const prevButton = document.createElement("button");
+      prevButton.innerText = "Précédent";
+      prevButton.addEventListener("click", () =>
+        handleNavigation("prev", tabBody)
+      );
 
-    const nextButton = document.createElement("button");
-    nextButton.innerText = "Suivant";
-    nextButton.addEventListener("click", () => handleNavigation("next"));
+      const nextButton = document.createElement("button");
+      nextButton.innerText = "Suivant";
+      nextButton.addEventListener("click", () =>
+        handleNavigation("next", tabBody)
+      );
 
-    // Insération juste après le tableau
-    tableContainer.after(prevButton, pageDisplay, nextButton);
-  })
-  .catch((error) => {
-    console.log("Erreur lors de la création de la table", error);
-  });
+      // Insération juste après le tableau
+      tableContainer.after(prevButton, pageDisplay, nextButton);
+    })
+    .catch((error) => {
+      console.log("Erreur lors de la création de la table", error);
+    });
+};
