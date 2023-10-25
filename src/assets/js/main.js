@@ -8,10 +8,11 @@ export const creatMain = (page = "character") => {
   makeContentMain();
 };
 
-const makeContentMain = (page = "character") => {
-  const main = document.querySelector(".content");
+export const makeContentMain = (page = "characters") => {
+  const main = document.querySelector("#content");
 
-  if (page == "character") {
+  main.innerHTML = "";
+  if (page == "characters") {
     selectHeroesPart();
     createHeroesTab();
   }
