@@ -1,12 +1,17 @@
 $colorprimary: rgb(14, 5, 50);
 $activeColor: rgb(67, 160, 31);
+$activeColor: rgb(217, 49, 49);
 
 .Select-heroes-part {
+  position: relative;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 30px;
 
   align-items: center;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
   .Select-heroes-cont {
     display: flex;
     flex-direction: column;

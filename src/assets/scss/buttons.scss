@@ -1,8 +1,10 @@
 $textColor: rgb(42, 94, 22);
+$textColor: rgb(217, 49, 49);
 $bgColor: rgb(255, 247, 0);
 $bgColorhover: rgb(255, 225, 0);
 $bgColoractive: rgb(255, 183, 0);
 $colorprimary: rgb(14, 5, 50);
+
 .btn-standard {
   height: 50px;
   width: 70px;
@@ -10,7 +12,7 @@ $colorprimary: rgb(14, 5, 50);
   color: $textColor;
   background-color: $bgColor;
   font-size: 1.8rem;
-  border: 2px solid $textColor;
+  border: 2px solid $colorprimary;
   border-radius: 10px;
   transition: font-size 0.1s, background-color 0.1s;
   &:hover {

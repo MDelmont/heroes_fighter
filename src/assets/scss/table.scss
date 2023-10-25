@@ -1,0 +1,76 @@
+$colorprimary: rgb(14, 5, 50);
+$activeColor: rgb(217, 49, 49);
+$textcolorhead: #ccc;
+$colorbglineodd: #f2f2f2;
+$colorbglineeven: #fafafa;
+// Styles pour le tableau
+table {
+  position: relative;
+  width: 80%;
+  border-collapse: collapse;
+  border: 2px solid $colorprimary;
+  margin-bottom: 20px;
+
+  left: 50%;
+  transform: translateX(-50%);
+  th {
+    background-color: $colorprimary;
+    color: $textcolorhead;
+    padding: 10px;
+    border: 1px solid $textcolorhead;
+    &:nth-child(1) {
+      width: 150px;
+    }
+    &:nth-child(2) {
+      width: 50px;
+    }
+    &:nth-child(3) {
+      width: 50px;
+    }
+    &:nth-child(4) {
+      width: 50px;
+    }
+    &:nth-child(5) {
+      width: 50px;
+    }
+    &:nth-child(6) {
+      width: 50px;
+    }
+    &:nth-child(7) {
+      width: 50px;
+    }
+    &:nth-child(8) {
+      width: 150px;
+    }
+    &:nth-child(9) {
+      width: 75px;
+    }
+    &:nth-child(10) {
+      width: 150px;
+    }
+  }
+  tr:nth-child(odd) {
+    background-color: $colorbglineodd;
+  }
+  tr:nth-child(even) {
+    background-color: $colorbglineeven;
+  }
+
+  td {
+    padding: 10px;
+    border: 1px solid $textcolorhead;
+    text-align: center;
+  }
+}
+#tableNav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    margin: 30px;
+  }
+  button {
+    height: 20%;
+  }
+}

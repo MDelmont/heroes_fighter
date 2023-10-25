@@ -12,21 +12,16 @@
   font-style: normal;
 }
 
-a {
-  font-family: "Bangers", sans-serif;
-}
-h1 {
-  font-family: "Bangers", sans-serif;
-}
-p {
-  font-family: "Architects_Daughter", sans-serif;
-}
-
-.versus {
-  p {
-    font-family: "Bangers", sans-serif;
-  }
-}
+a,
+h1,
+.versus p,
 button {
   font-family: "Bangers", sans-serif;
+}
+
+p,
+th,
+td,
+#tableNav span {
+  font-family: "Architects_Daughter", sans-serif;
 }

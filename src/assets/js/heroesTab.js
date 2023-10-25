@@ -223,7 +223,7 @@ export const createHeroesTab = () => {
       tableNav.appendChild(pageDisplay);
       tableNav.appendChild(nextButton);
       // Insération juste après le tableau
-      tableContainer.after(tableNav);
+      tableContainer.before(tableNav);
     })
     .catch((error) => {
       console.log("Erreur lors de la création de la table", error);
