@@ -1,5 +1,5 @@
 import { creatNav } from "./nav.js";
-import { createHeroesTab } from "./heroesTab";
+import { createHeroesTab } from "./heroesTab.js";
 
 const makePage = () => {
   console.log("makePage");
@@ -8,7 +8,7 @@ const makePage = () => {
   let nav = creatNav();
   body.appendChild(nav);
 
-  let heroesTab = createHeroesTab();
+  createHeroesTab();
 };
 
 const makePageContent = (name) => {};
