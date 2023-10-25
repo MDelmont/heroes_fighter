@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Bangers";
+  src: url("../font/Bangers/Bangers-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Architects_Daughter";
+  src: url("../font/Architects_Daughter/ArchitectsDaughter-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+a {
+  font-family: "Bangers", sans-serif;
+}
+h1 {
+  font-family: "Bangers", sans-serif;
+}
+p {
+  font-family: "Architects_Daughter", sans-serif;
+}
