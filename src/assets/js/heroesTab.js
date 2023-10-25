@@ -1,10 +1,15 @@
 import { data } from "./datas";
 
-let allCharacters = [];
-let currentPage = 1;
 let pageDisplay;
+let currentPage = 1;
+let allCharacters = [];
+let sortState = {
+  column: null,
+  direction: "asc", // 'asc' pour croissant, 'desc' pour décroissant
+};
 
 const ITEMS_PER_PAGE = 20;
+
 const headers = [
   "Nom",
   "Intelligence",
@@ -16,6 +21,19 @@ const headers = [
   "Éditeur",
   "Genre",
   "Race",
+];
+
+const columnKeyMapping = [
+  "name",
+  "powerstats.intelligence",
+  "powerstats.strength",
+  "powerstats.speed",
+  "powerstats.durability",
+  "powerstats.power",
+  "powerstats.combat",
+  "biography.publisher",
+  "appearance.gender",
+  "appearance.race",
 ];
 
 /**
@@ -30,9 +48,12 @@ const createTable = () => {
 
   //Headers
   const headerRow = document.createElement("tr");
-  headers.forEach((header) => {
+  headers.forEach((header, index) => {
     const tabHeader = document.createElement("th");
     tabHeader.innerText = header;
+    tabHeader.addEventListener("click", () =>
+      sortTableByColumn(index, tabBody)
+    );
     headerRow.appendChild(tabHeader);
   });
 
@@ -41,6 +62,41 @@ const createTable = () => {
   table.appendChild(tabBody);
 
   return { table, tabBody };
+};
+
+const sortTableByColumn = (columnIndex, tabBody) => {
+  const key = columnKeyMapping[columnIndex];
+
+  // Inversez la direction si la colonne est déjà triée
+  if (sortState.column === key) {
+    sortState.direction = sortState.direction === "asc" ? "desc" : "asc";
+  } else {
+    sortState.column = key;
+    sortState.direction = "asc";
+  }
+
+  allCharacters.sort((a, b) => {
+    const valueA = key
+      .split(".")
+      .reduce((powerstats, stats) => powerstats[stats], a);
+    const valueB = key
+      .split(".")
+      .reduce((powerstats, stats) => powerstats[stats], b);
+
+    // Si les valeurs sont des nombres
+    if (!isNaN(valueA) && !isNaN(valueB)) {
+      return sortState.direction === "asc"
+        ? parseInt(valueA) - parseInt(valueB)
+        : parseInt(valueB) - parseInt(valueA);
+    }
+
+    // Si les valeurs sont des lettres
+    if (valueA < valueB) return sortState.direction === "asc" ? -1 : 1;
+    if (valueA > valueB) return sortState.direction === "asc" ? 1 : -1;
+    return 0;
+  });
+
+  showPage(currentPage, tabBody);
 };
 
 /**

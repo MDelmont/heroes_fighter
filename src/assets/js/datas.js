@@ -1,4 +1,5 @@
 let env = require("../../data/auth.json");
+
 export const data = async () => {
   return fetch(`https://superheroapi.com/api.php/${env.token}/search/a`, {
     method: "GET",
