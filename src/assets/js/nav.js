@@ -1,14 +1,18 @@
-const body = document.querySelector("body");
+export const creatNav = () => {
+  let nav = document.createElement("nav");
+  nav.classList.add("navigation");
 
-let nav = document.createElement("nav");
-nav.classList.append("navigation");
+  let pages = ["Heroes fighter", "versus", "characters"];
 
-pages = ["Heroes fighter", "versus", "characters"];
-
-for (const elem of pages) {
-  let p = document.createElement("p");
-  p.appendChild(elem);
-  nav.appendChild(p);
-}
-
-export default nav;
+  for (const elem of pages) {
+    let div = document.createElement("div");
+    div.classList.add("title-page");
+    let a = document.createElement("a");
+    a.href = `#${elem.replace(" ", "_")}`;
+    a.className = "nav-btn";
+    a.textContent = elem;
+    div.appendChild(a);
+    nav.appendChild(div);
+  }
+  return nav;
+};
