@@ -33,6 +33,7 @@ export const takeList = (name) => {
         if (!list.includes(data?.biography?.publisher)) {
           list.push(data?.biography?.publisher);
         }
+        break;
       case "name":
         list.push([data?.id, data?.name]);
         break;
