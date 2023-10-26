@@ -112,11 +112,11 @@ const addDataRow = (datas, tabBody) => {
   const nameData = document.createElement("td");
   const nameLink = document.createElement("a");
   nameLink.href = "#";
-  nameLink.innerHTML = data.name;
+  nameLink.innerHTML = datas.name;
   nameLink.addEventListener("click", (e) => {
     e.preventDefault();
 
-    const modal = createModal(data);
+    const modal = createModal(datas);
     modal.style.display = "block";
   });
 
@@ -124,17 +124,6 @@ const addDataRow = (datas, tabBody) => {
   dataRow.appendChild(nameData);
 
   [
-    handleNullValue(data.powerstats.intelligence),
-    handleNullValue(data.powerstats.strength),
-    handleNullValue(data.powerstats.speed),
-    handleNullValue(data.powerstats.durability),
-    handleNullValue(data.powerstats.power),
-    handleNullValue(data.powerstats.combat),
-    handleNullValue(data.biography.publisher),
-    handleNullValue(data.appearance.gender),
-    handleNullValue(data.appearance.race),
-  [
-    datas.name,
     handleNullValue(datas.powerstats.intelligence),
     handleNullValue(datas.powerstats.strength),
     handleNullValue(datas.powerstats.speed),
@@ -223,33 +212,27 @@ export const createHeroesTab = () => {
   const { table, tabBody } = createTable();
   tableContainer.appendChild(table);
 
+  allCharacters = datas.results;
 
-      allCharacters = datas.results;
+  showPage(1, tabBody);
 
-      showPage(1, tabBody);
+  // Création de l'affichage de la page et des boutons de navigation.
+  pageDisplay = document.createElement("span");
+  updatePageDisplay();
 
-      // Création de l'affichage de la page et des boutons de navigation.
-      pageDisplay = document.createElement("span");
-      updatePageDisplay();
+  const prevButton = document.createElement("button");
+  prevButton.innerText = "Précédent";
+  prevButton.addEventListener("click", () => handleNavigation("prev", tabBody));
 
-      const prevButton = document.createElement("button");
-      prevButton.innerText = "Précédent";
-      prevButton.addEventListener("click", () =>
-        handleNavigation("prev", tabBody)
-      );
+  const nextButton = document.createElement("button");
+  nextButton.innerText = "Suivant";
+  nextButton.addEventListener("click", () => handleNavigation("next", tabBody));
 
-      const nextButton = document.createElement("button");
-      nextButton.innerText = "Suivant";
-      nextButton.addEventListener("click", () =>
-        handleNavigation("next", tabBody)
-      );
-
-      const tableNav = document.createElement("div");
-      tableNav.id = "tableNav";
-      tableNav.appendChild(prevButton);
-      tableNav.appendChild(pageDisplay);
-      tableNav.appendChild(nextButton);
-      // Insération juste avant le tableau
-      tableContainer.before(tableNav);
-
+  const tableNav = document.createElement("div");
+  tableNav.id = "tableNav";
+  tableNav.appendChild(prevButton);
+  tableNav.appendChild(pageDisplay);
+  tableNav.appendChild(nextButton);
+  // Insération juste avant le tableau
+  tableContainer.before(tableNav);
 };
