@@ -1,6 +1,9 @@
+import { createElementWithProps, handleNullValue } from "../utils";
 import { headers, columnKeyMapping } from "./constants";
 import { createModal } from "./modal";
 import { allCharacters, currentPage, showPage } from "./navigation";
+
+export const tabBody = document.createElement("tbody");
 
 let sortState = {
   column: null,
@@ -15,13 +18,11 @@ let sortState = {
 export const createTable = () => {
   const table = document.createElement("table");
   const tabHead = document.createElement("thead");
-  const tabBody = document.createElement("tbody");
 
   //Headers
   const headerRow = document.createElement("tr");
   headers.forEach((header, index) => {
-    const tabHeader = document.createElement("th");
-    tabHeader.innerText = header;
+    const tabHeader = createElementWithProps("th", { innerText: header })
     tabHeader.addEventListener("click", () =>
       sortTableByColumn(index, tabBody)
     );
@@ -32,27 +33,29 @@ export const createTable = () => {
   table.appendChild(tabHead);
   table.appendChild(tabBody);
 
-  return { table, tabBody };
+  return table;
 };
 
+/**
+ * Trie le tableau de données "allCharacters" par la colonne spécifiée.
+ *
+ * @param {number} columnIndex - L'indice de la colonne par laquelle trier le tableau.
+ * @param {HTMLElement} tabBody - L'élément HTML du corps du tableau où les données sont affichées.
+ */
 export const sortTableByColumn = (columnIndex, tabBody) => {
-  const key = columnKeyMapping[columnIndex];
+  const caracteristics = columnKeyMapping[columnIndex];
 
   // Inversez la direction si la colonne est déjà triée
-  if (sortState.column === key) {
+  if (sortState.column === caracteristics) {
     sortState.direction = sortState.direction === "asc" ? "desc" : "asc";
   } else {
-    sortState.column = key;
+    sortState.column = caracteristics;
     sortState.direction = "asc";
   }
 
   allCharacters.sort((a, b) => {
-    const valueA = key
-      .split(".")
-      .reduce((powerstats, stats) => powerstats[stats], a);
-    const valueB = key
-      .split(".")
-      .reduce((powerstats, stats) => powerstats[stats], b);
+    const valueA = caracteristics.split(".").reduce((powerstats, stats) => powerstats[stats], a);
+    const valueB = caracteristics.split(".").reduce((powerstats, stats) => powerstats[stats], b);
 
     // Si les valeurs sont des nombres
     if (!isNaN(valueA) && !isNaN(valueB)) {
@@ -73,20 +76,18 @@ export const sortTableByColumn = (columnIndex, tabBody) => {
 /**
  * Ajoute une ligne de données au tableau.
  *
- * @param {Object} datas - Les données du personnage à ajouter.
+ * @param {Object} character - Les données du personnage à ajouter.
  * @param {HTMLElement} tabBody - Le corps du tableau.
  */
-export const addDataRow = (datas, tabBody) => {
+export const addDataRow = (character, tabBody) => {
   const dataRow = document.createElement("tr");
-
   const nameData = document.createElement("td");
-  const nameLink = document.createElement("a");
-  nameLink.href = "#";
-  nameLink.innerHTML = datas.name;
+
+  const nameLink = createElementWithProps("a", { href: "#", innerText: character.name })
   nameLink.addEventListener("click", (e) => {
     e.preventDefault();
 
-    const modal = createModal(datas);
+    const modal = createModal(character);
     modal.style.display = "block";
   });
 
@@ -94,30 +95,19 @@ export const addDataRow = (datas, tabBody) => {
   dataRow.appendChild(nameData);
 
   [
-    handleNullValue(datas.powerstats.intelligence),
-    handleNullValue(datas.powerstats.strength),
-    handleNullValue(datas.powerstats.speed),
-    handleNullValue(datas.powerstats.durability),
-    handleNullValue(datas.powerstats.power),
-    handleNullValue(datas.powerstats.combat),
-    handleNullValue(datas.biography.publisher),
-    handleNullValue(datas.appearance.gender),
-    handleNullValue(datas.appearance.race),
-  ].forEach((item) => {
-    const tabData = document.createElement("td");
-    tabData.innerText = item;
+    handleNullValue(character.powerstats.intelligence),
+    handleNullValue(character.powerstats.strength),
+    handleNullValue(character.powerstats.speed),
+    handleNullValue(character.powerstats.durability),
+    handleNullValue(character.powerstats.power),
+    handleNullValue(character.powerstats.combat),
+    handleNullValue(character.biography.publisher),
+    handleNullValue(character.appearance.gender),
+    handleNullValue(character.appearance.race),
+  ].forEach((stat) => {
+    const tabData = createElementWithProps("td", { innerText: stat });
     dataRow.appendChild(tabData);
   });
 
   tabBody.appendChild(dataRow);
-};
-
-/**
- * Gère les valeurs nulles en remplaçant "null" par "N/A".
- *
- * @param {string} value - La valeur à vérifier.
- * @returns {string} La valeur traitée.
- */
-export const handleNullValue = (value) => {
-  return value === "null" ? "N/A" : value;
 };
