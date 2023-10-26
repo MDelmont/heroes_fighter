@@ -42,7 +42,7 @@ const makeSelectCont = () => {
     select.appendChild(option);
   });
   let img = document.createElement("img");
-  img.className = "img-heroes";
+  img.className = "img-heroes d-none";
   div.appendChild(select);
   div.appendChild(img);
   return div;

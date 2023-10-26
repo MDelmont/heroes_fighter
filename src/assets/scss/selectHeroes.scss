@@ -21,8 +21,9 @@ $activeColor: rgb(217, 49, 49);
       width: clamp(100px, 80%, 200px);
     }
     .img-heroes {
-      width: clamp(100px, 80%, 200px);
-      height: 50px;
+      width: clamp(75px, 40%, 150px);
+
+      aspect-ratio: 480/640;
       background-color: bleu;
     }
   }

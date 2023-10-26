@@ -1,7 +1,6 @@
 import { makeContentMain } from "./main.js";
 import { characterImage } from "./datas.js";
-
-// Navbar listener
+import imgTransp from "../img/Transparent.psd";
 
 // Sélectionnez tous les éléments ayant une certaine classe CSS
 const navBtns = document.querySelectorAll(".title-page"); // Remplacez 'maClasse' par la classe que vous ciblez
@@ -30,10 +29,11 @@ export const eventListenerSelectHereos = (selectHero) => {
     const selectedOptionId = selectedOption.id.split("-")[1];
     if (selectedValue != "") {
       characterImage(selectedOptionId).then((urlimg) => {
+        img.classList.remove("d-none");
         img.src = urlimg;
       });
     } else {
-      img.src = "";
+      img.classList.add("d-none");
     }
   });
 };
