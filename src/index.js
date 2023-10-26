@@ -7,7 +7,7 @@ import "./assets/scss/nav.scss";
 import "./assets/scss/selectHeroes.scss";
 import "./assets/scss/table.scss";
 import "./assets/scss/contBandeau.scss";
-
+import "./assets/scss/versus.scss";
 // JS
 import "./assets/js/app";
 import "./assets/js/listener";

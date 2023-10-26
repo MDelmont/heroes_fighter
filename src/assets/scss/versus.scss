@@ -1,0 +1,354 @@
+$colorprimary: rgb(14, 5, 50);
+$bgColorhover: rgb(255, 225, 148);
+$bgColoractive: rgb(255, 183, 0);
+$activeColor: rgb(217, 49, 49);
+$looseColor: rgb(186, 44, 44);
+$winColor: rgb(26, 149, 77);
+.versus-bandeau {
+  padding-bottom: 0px;
+  .cont-info {
+    max-width: 1000px;
+    position: relative;
+    min-height: 100px;
+    width: 100%;
+
+    button {
+      position: absolute;
+
+      border-radius: 10px;
+      left: 50%;
+      top: 50%;
+      font-size: 1.5rem;
+      border: 2px solid $colorprimary;
+      transform: translateX(-50%) translateY(-50%);
+      transition: font-size 0.5s;
+      animation: buttonMove 0.7s infinite alternate;
+      &:hover {
+        background-color: $bgColorhover;
+        animation: none;
+        font-size: 1.55rem;
+      }
+      &:active {
+        background-color: $bgColoractive;
+
+        font-size: 1.4rem;
+      }
+    }
+
+    .cont-versus-heroes {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      width: 90%;
+      align-items: center;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      transition: width 0.5s;
+      .versus {
+        width: 34%;
+      }
+      .heroes-card {
+        width: 33%;
+
+        img {
+          width: 100%;
+          aspect-ratio: 480/640;
+          transition: width 0.5s;
+        }
+        p {
+          color: $colorprimary;
+          transition: font-size 0.5s;
+        }
+      }
+    }
+    .cont-versus-test {
+      position: relative;
+      text-align: center;
+      .cont-versus-test-corp {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+
+        align-items: center;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: width 0.5s;
+        img {
+          width: 60px;
+          transition: width 0.5s;
+        }
+        .heroes-card {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 30%;
+          p {
+            font-size: 1.1rem;
+            transition: font-size 0.5s;
+          }
+          img {
+            aspect-ratio: 480/640;
+            width: 100%;
+            transition: width 0.5s;
+          }
+          .result-game {
+            &.Looser {
+              color: $looseColor;
+            }
+            &.Winner {
+              color: $winColor;
+            }
+          }
+        }
+      }
+    }
+    .cont-result-versus {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      h2 {
+        color: $winColor;
+        transition: font-size 0.5s;
+      }
+      img {
+        width: 50%;
+        transition: width 0.5s;
+      }
+      p {
+        margin: 5px;
+        font-size: 3rem;
+        color: $bgColorhover;
+        -webkit-text-stroke: 3px $colorprimary; /* Épaisseur et couleur du "stroke" */
+        transition: font-size 0.5s;
+      }
+    }
+  }
+}
+
+@keyframes buttonMove {
+  from {
+    font-size: 1.4rem;
+  }
+  to {
+    font-size: 1.55rem;
+  }
+}
+
+@media (min-width: 425px) {
+  .versus-bandeau {
+    .cont-info {
+      button {
+        font-size: 2rem;
+        &:hover {
+          font-size: 2rem;
+        }
+        &:active {
+          font-size: 1.8rem;
+        }
+      }
+
+      .cont-versus-heroes {
+        .versus {
+          width: 34%;
+        }
+        .heroes-card {
+          width: 33%;
+          p {
+            font-size: 1.5rem;
+          }
+          img {
+            width: 100%;
+          }
+        }
+      }
+      .cont-versus-test {
+        .cont-versus-test-corp {
+          width: 90%;
+          img {
+            width: 80px;
+          }
+          .heroes-card {
+            width: 30%;
+            p {
+              font-size: 1.3rem;
+            }
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+      .cont-result-versus {
+        width: 100%;
+        h2 {
+          font-size: 2rem;
+        }
+        img {
+          width: 50%;
+        }
+        p {
+          font-size: 3.2rem;
+        }
+      }
+    }
+  }
+
+  @keyframes buttonMove {
+    from {
+      font-size: 2rem;
+    }
+    to {
+      font-size: 2.3rem;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .versus-bandeau {
+    .cont-info {
+      button {
+        font-size: 2rem;
+        &:hover {
+          font-size: 2rem;
+        }
+        &:active {
+          font-size: 1.8rem;
+        }
+      }
+
+      .cont-versus-heroes {
+        .versus {
+          width: 34%;
+        }
+        .heroes-card {
+          width: 33%;
+          p {
+            font-size: 1.8rem;
+          }
+          img {
+            width: 100%;
+          }
+        }
+      }
+      .cont-versus-test {
+        h2 {
+          font-size: 1.9rem;
+        }
+        .cont-versus-test-corp {
+          width: 90%;
+          img {
+            width: 100px;
+          }
+          .heroes-card {
+            width: 30%;
+            p {
+              font-size: 1.8rem;
+            }
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+      .cont-result-versus {
+        width: 100%;
+        h2 {
+          font-size: 2rem;
+        }
+        img {
+          width: 50%;
+        }
+        p {
+          font-size: 3.2rem;
+        }
+      }
+    }
+  }
+
+  @keyframes buttonMove {
+    from {
+      font-size: 2rem;
+    }
+    to {
+      font-size: 2.3rem;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .versus-bandeau {
+    .cont-info {
+      button {
+        font-size: 2.3rem;
+        &:hover {
+          font-size: 2.3rem;
+        }
+        &:active {
+          font-size: 2.1rem;
+        }
+      }
+
+      .cont-versus-heroes {
+        .versus {
+          width: 34%;
+        }
+        .heroes-card {
+          width: 33%;
+          p {
+            font-size: 1.8rem;
+          }
+          img {
+            width: 100%;
+          }
+        }
+      }
+      .cont-versus-test {
+        h2 {
+          font-size: 1.9rem;
+        }
+        .cont-versus-test-corp {
+          width: 90%;
+          img {
+            width: 150px;
+          }
+          .heroes-card {
+            width: 30%;
+            p {
+              font-size: 1.8rem;
+            }
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+      .cont-result-versus {
+        width: 100%;
+
+        h2 {
+          font-size: 2rem;
+        }
+        img {
+          width: 50%;
+        }
+        p {
+          font-size: 3.2rem;
+        }
+      }
+    }
+  }
+
+  @keyframes buttonMove {
+    from {
+      font-size: 2.3rem;
+    }
+    to {
+      font-size: 2.6rem;
+    }
+  }
+}

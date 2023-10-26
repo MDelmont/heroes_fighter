@@ -1,4 +1,4 @@
-$textColor: rgb(42, 94, 22);
+$textColor2: rgb(42, 94, 22);
 $textColor: rgb(217, 49, 49);
 $bgColor: rgb(255, 247, 0);
 $bgColorhover: rgb(255, 225, 0);
@@ -29,6 +29,12 @@ button {
   background-color: white;
   color: $textColor;
   border: 2px solid $textColor;
+
+  &.green {
+    color: $textColor2;
+    border: 2px solid $textColor2;
+  }
+
   &:active {
     background-color: $bgColorhover;
   }
