@@ -3,9 +3,8 @@ import { selectHeroesPart } from "./selectHeros";
 import { createFormTab } from "./formTab";
 import { data } from "./datas";
 
-import{MakeheroesFighterPage} from "./herosFighterPage";
+import { MakeheroesFighterPage } from "./herosFighterPage";
 import { createElementWithProps } from "./utils";
-
 
 export const creatMain = (page = "character") => {
   const main = createElementWithProps("main", { id: "content" });
@@ -22,8 +21,8 @@ export const makeContentMain = (page = "heroes fighter") => {
     data()
       .then(() => {
         selectHeroesPart();
-        // createFormTab();
-        // createHeroesTab();
+        createFormTab();
+        createHeroesTab();
       })
       .catch((err) => {
         console.error("error", err);
