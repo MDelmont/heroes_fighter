@@ -1,6 +1,5 @@
 import { makeContentMain } from "./main.js";
 import { characterImage } from "./datas.js";
-import imgTransp from "../img/Transparent.psd";
 
 // Sélectionnez tous les éléments ayant une certaine classe CSS
 const navBtns = document.querySelectorAll(".title-page"); // Remplacez 'maClasse' par la classe que vous ciblez
