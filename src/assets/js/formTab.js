@@ -27,7 +27,7 @@ export const createFormTab = () => {
  * @param {string} id - L'ID à attribuer au sélecteur.
  * @returns {HTMLElement} Le conteneur de sélecteur.
  */
-function createSelectContainer(name, id) {
+const createSelectContainer = (name, id) => {
   const div = CreateElementWithProps("div", { className: "select-form-tab" })
 
   const label = CreateElementWithProps("label", { textContent: name, for: id })
@@ -46,14 +46,12 @@ function createSelectContainer(name, id) {
  * @param {string} id - L'ID à attribuer au sélecteur.
  * @returns {HTMLElement} Le sélecteur.
  */
-function createSelectWithOptions(name, id) {
+const createSelectWithOptions = (name, id) => {
   const select = CreateElementWithProps("select", { className: "select-tab", id: id })
 
   const optionsValues = takeList(removeAccents(name).toLowerCase());
   optionsValues.forEach((optionValue) => {
-    const option = document.createElement("option");
-    option.value = optionValue;
-    option.text = optionValue;
+    const option = CreateElementWithProps("option", { value: optionValue, textContent: optionValue });
     select.appendChild(option);
   });
 
