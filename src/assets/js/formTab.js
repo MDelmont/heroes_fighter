@@ -1,5 +1,11 @@
-import { takeList } from "./datas";
+import { env, data, takeList, datas } from "./datas";
 import { CreateElementWithProps, removeAccents } from "./utils";
+import { allCharacters, showPage, updatePageDisplay } from "./heroesTab/navigation";
+import { tBody } from "./heroesTab/main";
+
+let inputSearch;
+let publisherSelect;
+let raceSelect;
 
 /**
  * Crée un formulaire avec une zone de saisie et deux sélecteurs, puis l'ajoute à l'élément principal.
@@ -8,11 +14,15 @@ export const createFormTab = () => {
   const mainContainer = document.querySelector("#content");
   const formContainer = CreateElementWithProps("div", {className: "form-tab-part"})
 
-  const inputSearch = CreateElementWithProps("input", { placeholder: "Chercher un nom de héro", className: "inpt-filter-name" });
+  inputSearch = CreateElementWithProps("input", { placeholder: "Chercher un nom de héro", className: "inpt-filter-name" });
+  inputSearch.addEventListener("input", () => filterTable());
   formContainer.appendChild(inputSearch);
 
-  const publisherSelect = createSelectContainer("Éditeur", "select-editeur");
-  const raceSelect = createSelectContainer("Race", "select-race");
+  publisherSelect = createSelectContainer("Éditeur", "select-editeur");
+  publisherSelect.querySelector("select").addEventListener("change", () => filterTable());
+
+  raceSelect = createSelectContainer("Race", "select-race");
+  raceSelect.querySelector('select').addEventListener('change', () => filterTable());
 
   formContainer.appendChild(publisherSelect);
   formContainer.appendChild(raceSelect);
@@ -57,3 +67,20 @@ const createSelectWithOptions = (name, id) => {
 
   return select;
 }
+
+const filterTable = () => {
+  const searchValue = inputSearch.value;
+  const publisherValue = publisherSelect.querySelector('select').value;
+  const raceValue = raceSelect.querySelector('select').value;
+
+  let characters = datas.results.filter((character) => {
+    const matchSearch = removeAccents(character.name).toLowerCase().includes(searchValue) || searchValue?.trim()?.length == 0;
+    const matchPublisher = character.biography.publisher === publisherValue || publisherValue?.trim()?.length == 0;
+    const matchRace = character.appearance.race === raceValue || raceValue?.trim()?.length == 0;
+
+    return matchSearch && matchPublisher && matchRace
+  });
+
+  showPage(1, tBody, characters);
+  updatePageDisplay(characters);
+};

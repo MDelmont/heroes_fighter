@@ -1,4 +1,4 @@
-let env = require("../../data/auth.json");
+export let env = require("../../data/auth.json");
 
 export let datas;
 
@@ -33,7 +33,11 @@ export const takeList = (name) => {
     }
   }
 
-  return Array.from(list);
+  let resultList = Array.from(list);
+
+  if (name !== "name") resultList.unshift(null);
+
+  return resultList;
 };
 
 export const characterImage = (id) => {
