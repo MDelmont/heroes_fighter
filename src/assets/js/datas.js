@@ -18,8 +18,8 @@ export const data = async () => {
 };
 
 export const takeList = (name) => {
-  console.log(datas);
-  let list = [];
+ 
+  let list = [''];
   for (const data of datas.results) {
     switch (name) {
       case "race":
@@ -35,7 +35,7 @@ export const takeList = (name) => {
           list.push(data?.biography?.publisher);
         }
       case "name":
-        list.push([]);
+        list.push([data?.id, data?.name]);
         break;
     }
   }
