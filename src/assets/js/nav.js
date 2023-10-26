@@ -10,7 +10,7 @@ export const createNavBar = () => {
     const navItem = document.createElement("div");
     navItem.classList.add("title-page");
 
-    if (title === "Characters") navItem.classList.add("active");
+    if (title === "Heroes Fighter") navItem.classList.add("active");
 
     const navLink = document.createElement("a");
     // navLink.href = `#${title.replace(" ", "_")}`;
