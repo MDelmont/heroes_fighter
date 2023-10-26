@@ -1,3 +1,4 @@
+import { CreateElementWithProps } from "../utils";
 import { headers, columnKeyMapping } from "./constants";
 import { createModal } from "./modal";
 import { allCharacters, currentPage, showPage } from "./navigation";
@@ -20,8 +21,7 @@ export const createTable = () => {
   //Headers
   const headerRow = document.createElement("tr");
   headers.forEach((header, index) => {
-    const tabHeader = document.createElement("th");
-    tabHeader.innerText = header;
+    const tabHeader = CreateElementWithProps("th", { innerText: header })
     tabHeader.addEventListener("click", () =>
       sortTableByColumn(index, tabBody)
     );

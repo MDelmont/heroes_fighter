@@ -8,6 +8,7 @@ import {
 } from "./navigation";
 
 export let pageDisplay;
+export let tBody;
 
 // Initialisation du tableau et des boutons de navigation.
 export const createHeroesTab = () => {
@@ -22,7 +23,9 @@ export const createHeroesTab = () => {
 
   const { table, tabBody } = createTable();
   tableContainer.appendChild(table);
-
+  
+  tBody = tabBody;
+  
   setPageCharacters(datas.results);
 
   showPage(1, tabBody);

@@ -4,6 +4,8 @@
  * @returns {string} La chaîne d'entrée sans aucun accent.
  */
 export const removeAccents = (str) => {
+  if (!str) return;
+
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 };
 
@@ -24,6 +26,7 @@ export const CreateElementWithProps = (element, options = {}) => {
   if (options.type) el.type = options.type;
   if (options.name) el.name = options.name;
   if (options.for) el.for = options.for;
+  if (options.innerText) el.innerText = options.innerText;
 
   return el;
 };

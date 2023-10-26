@@ -29,14 +29,16 @@ export const handleNavigation = (direction, tabBody) => {
  *
  * @param {number} page - Le numéro de page à afficher.
  * @param {HTMLElement} tabBody - Le corps du tableau.
+ * @param {Object} characters - Les personnages à afficher sur la page.
  */
-export const showPage = (page, tabBody) => {
+export const showPage = (page, tabBody, characters = allCharacters) => {
   const startIndex = (page - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
-
+  
+  if (characters) allCharacters = characters;
   tabBody.innerHTML = "";
 
-  const currentItems = allCharacters.slice(startIndex, endIndex);
+  const currentItems = characters.slice(startIndex, endIndex);
   currentItems.forEach((character) => {
     addDataRow(character, tabBody);
   });
@@ -44,11 +46,13 @@ export const showPage = (page, tabBody) => {
 
 /**
  * Met à jour l'affichage du numéro de page.
+ * @param {Object} characters - Les personnages à afficher sur la page.
  */
-export const updatePageDisplay = () => {
-  pageDisplay.innerText = `Page ${currentPage} sur ${Math.ceil(
-    allCharacters.length / ITEMS_PER_PAGE
-  )}`;
+export const updatePageDisplay = (characters = allCharacters) => {
+  const maxNumberPage = Math.ceil(characters.length / ITEMS_PER_PAGE)
+  currentPage = currentPage > maxNumberPage ? maxNumberPage : currentPage;
+
+  pageDisplay.innerText = `Page ${currentPage} sur ${maxNumberPage}`;
 };
 
 export const setPageCharacters = (characters) => {
