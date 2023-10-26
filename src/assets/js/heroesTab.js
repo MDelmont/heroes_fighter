@@ -1,4 +1,4 @@
-import { data } from "./datas";
+import { datas } from "./datas";
 
 let pageDisplay;
 let currentPage = 1;
@@ -102,22 +102,22 @@ const sortTableByColumn = (columnIndex, tabBody) => {
 /**
  * Ajoute une ligne de données au tableau.
  *
- * @param {Object} data - Les données du personnage à ajouter.
+ * @param {Object} datas - Les données du personnage à ajouter.
  * @param {HTMLElement} tabBody - Le corps du tableau.
  */
-const addDataRow = (data, tabBody) => {
+const addDataRow = (datas, tabBody) => {
   const dataRow = document.createElement("tr");
   [
-    data.name,
-    handleNullValue(data.powerstats.intelligence),
-    handleNullValue(data.powerstats.strength),
-    handleNullValue(data.powerstats.speed),
-    handleNullValue(data.powerstats.durability),
-    handleNullValue(data.powerstats.power),
-    handleNullValue(data.powerstats.combat),
-    handleNullValue(data.biography.publisher),
-    handleNullValue(data.appearance.gender),
-    handleNullValue(data.appearance.race),
+    datas.name,
+    handleNullValue(datas.powerstats.intelligence),
+    handleNullValue(datas.powerstats.strength),
+    handleNullValue(datas.powerstats.speed),
+    handleNullValue(datas.powerstats.durability),
+    handleNullValue(datas.powerstats.power),
+    handleNullValue(datas.powerstats.combat),
+    handleNullValue(datas.biography.publisher),
+    handleNullValue(datas.appearance.gender),
+    handleNullValue(datas.appearance.race),
   ].forEach((item) => {
     const tabData = document.createElement("td");
     tabData.innerText = item;
@@ -196,9 +196,8 @@ export const createHeroesTab = () => {
   const { table, tabBody } = createTable();
   tableContainer.appendChild(table);
 
-  data()
-    .then((response) => {
-      allCharacters = response.results;
+
+      allCharacters = datas.results;
 
       showPage(1, tabBody);
 
@@ -224,8 +223,5 @@ export const createHeroesTab = () => {
       tableNav.appendChild(nextButton);
       // Insération juste après le tableau
       tableContainer.before(tableNav);
-    })
-    .catch((error) => {
-      console.log("Erreur lors de la création de la table", error);
-    });
+
 };
