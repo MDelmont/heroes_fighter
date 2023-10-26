@@ -19,8 +19,8 @@ export const makeContentMain = (page = "heroes fighter") => {
     data()
       .then(() => {
         selectHeroesPart();
-        createFormTab();
-        createHeroesTab();
+        // createFormTab();
+        // createHeroesTab();
       })
       .catch((err) => {
         console.error("error", err);
