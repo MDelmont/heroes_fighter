@@ -1,4 +1,5 @@
 import { datas } from "./datas";
+import { createModal } from "./modal";
 
 let pageDisplay;
 let currentPage = 1;
@@ -8,7 +9,7 @@ let sortState = {
   direction: "asc", // 'asc' pour croissant, 'desc' pour décroissant
 };
 
-const ITEMS_PER_PAGE = 20;
+const ITEMS_PER_PAGE = 15;
 
 const headers = [
   "Nom",
@@ -107,6 +108,31 @@ const sortTableByColumn = (columnIndex, tabBody) => {
  */
 const addDataRow = (datas, tabBody) => {
   const dataRow = document.createElement("tr");
+
+  const nameData = document.createElement("td");
+  const nameLink = document.createElement("a");
+  nameLink.href = "#";
+  nameLink.innerHTML = data.name;
+  nameLink.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const modal = createModal(data);
+    modal.style.display = "block";
+  });
+
+  nameData.appendChild(nameLink);
+  dataRow.appendChild(nameData);
+
+  [
+    handleNullValue(data.powerstats.intelligence),
+    handleNullValue(data.powerstats.strength),
+    handleNullValue(data.powerstats.speed),
+    handleNullValue(data.powerstats.durability),
+    handleNullValue(data.powerstats.power),
+    handleNullValue(data.powerstats.combat),
+    handleNullValue(data.biography.publisher),
+    handleNullValue(data.appearance.gender),
+    handleNullValue(data.appearance.race),
   [
     datas.name,
     handleNullValue(datas.powerstats.intelligence),
@@ -187,8 +213,9 @@ const updatePageDisplay = () => {
 export const createHeroesTab = () => {
   const main = document.querySelector("#content");
   const tablePart = document.createElement("div");
-  tablePart.id = "tablePart";
   const tableContainer = document.createElement("div");
+
+  tablePart.id = "tablePart";
   tableContainer.id = "tableContainer";
   tablePart.appendChild(tableContainer);
   main.appendChild(tablePart);
@@ -216,12 +243,13 @@ export const createHeroesTab = () => {
       nextButton.addEventListener("click", () =>
         handleNavigation("next", tabBody)
       );
+
       const tableNav = document.createElement("div");
       tableNav.id = "tableNav";
       tableNav.appendChild(prevButton);
       tableNav.appendChild(pageDisplay);
       tableNav.appendChild(nextButton);
-      // Insération juste après le tableau
+      // Insération juste avant le tableau
       tableContainer.before(tableNav);
 
 };
