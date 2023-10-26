@@ -1,30 +1,21 @@
 import { datas } from "../datas";
-import { createTable } from "./tableFunctions";
-import {
-  handleNavigation,
-  showPage,
-  updatePageDisplay,
-  setPageCharacters,
-} from "./navigation";
+import { createTable, tabBody } from "./tableFunctions";
+import { handleNavigation, showPage, updatePageDisplay, setPageCharacters } from "./navigation";
+import { createElementWithProps } from "../utils";
 
 export let pageDisplay;
-export let tBody;
 
 // Initialisation du tableau et des boutons de navigation.
 export const createHeroesTab = () => {
   const main = document.querySelector("#content");
-  const tablePart = document.createElement("div");
-  const tableContainer = document.createElement("div");
+  const tablePart = createElementWithProps("div", { id: "tablePart"});
+  const tableContainer = createElementWithProps("div", { id: "tableContainer" });
 
-  tablePart.id = "tablePart";
-  tableContainer.id = "tableContainer";
   tablePart.appendChild(tableContainer);
   main.appendChild(tablePart);
 
-  const { table, tabBody } = createTable();
+  const table = createTable();
   tableContainer.appendChild(table);
-  
-  tBody = tabBody;
   
   setPageCharacters(datas.results);
 
@@ -34,16 +25,14 @@ export const createHeroesTab = () => {
   pageDisplay = document.createElement("span");
   updatePageDisplay();
 
-  const prevButton = document.createElement("button");
-  prevButton.innerText = "Précédent";
+  const prevButton = createElementWithProps("button", { innerText: "Précédent" });
   prevButton.addEventListener("click", () => handleNavigation("prev", tabBody));
 
-  const nextButton = document.createElement("button");
-  nextButton.innerText = "Suivant";
+  const nextButton = createElementWithProps("button", { innerText: "Suivant" });
   nextButton.addEventListener("click", () => handleNavigation("next", tabBody));
 
-  const tableNav = document.createElement("div");
-  tableNav.id = "tableNav";
+  const tableNav = createElementWithProps("div", { id: "tableNav" });
+
   tableNav.appendChild(prevButton);
   tableNav.appendChild(pageDisplay);
   tableNav.appendChild(nextButton);

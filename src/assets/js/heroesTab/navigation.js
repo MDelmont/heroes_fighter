@@ -36,12 +36,11 @@ export const showPage = (page, tabBody, characters = allCharacters) => {
   const endIndex = startIndex + ITEMS_PER_PAGE;
   
   if (characters) allCharacters = characters;
+
   tabBody.innerHTML = "";
 
   const currentItems = characters.slice(startIndex, endIndex);
-  currentItems.forEach((character) => {
-    addDataRow(character, tabBody);
-  });
+  currentItems.forEach((character) => { addDataRow(character, tabBody) });
 };
 
 /**
@@ -49,12 +48,16 @@ export const showPage = (page, tabBody, characters = allCharacters) => {
  * @param {Object} characters - Les personnages à afficher sur la page.
  */
 export const updatePageDisplay = (characters = allCharacters) => {
-  const maxNumberPage = Math.ceil(characters.length / ITEMS_PER_PAGE)
-  currentPage = currentPage > maxNumberPage ? maxNumberPage : currentPage;
+  const totalPages = Math.ceil(characters.length / ITEMS_PER_PAGE)
+  currentPage = currentPage > totalPages ? 1 : currentPage;
 
-  pageDisplay.innerText = `Page ${currentPage} sur ${maxNumberPage}`;
+  pageDisplay.innerText = `Page ${currentPage} sur ${totalPages}`;
 };
 
+/**
+ * 
+ * @param {Object} characters - Les données des personnages.
+ */
 export const setPageCharacters = (characters) => {
   allCharacters = characters;
 };

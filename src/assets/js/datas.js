@@ -1,5 +1,4 @@
 export let env = require("../../data/auth.json");
-
 export let datas;
 
 export const data = async () => {
@@ -40,7 +39,7 @@ export const takeList = (name) => {
   return resultList;
 };
 
-export const characterImage = (id) => {
+export const characterImage = async (id) => {
   return fetch(`https://superheroapi.com/api.php/${env.token}/${id}/image`, {
     method: "GET",
   })

@@ -15,7 +15,7 @@ export const removeAccents = (str) => {
  * @param {Object} options  - Un objet contenant les options pour l'élément.
  * @returns {HTMLElement} L'élément créé.
  */
-export const CreateElementWithProps = (element, options = {}) => {
+export const createElementWithProps = (element, options = {}) => {
   const el = document.createElement(element);
 
   if (options.className) el.classList.add(options.className);
@@ -27,6 +27,17 @@ export const CreateElementWithProps = (element, options = {}) => {
   if (options.name) el.name = options.name;
   if (options.for) el.for = options.for;
   if (options.innerText) el.innerText = options.innerText;
+  if (options.href) el.href = options.href;
 
   return el;
+};
+
+/**
+ * Gère les valeurs nulles en remplaçant "null" par "N/A".
+ *
+ * @param {string} value - La valeur à vérifier.
+ * @returns {string} La valeur traitée.
+ */
+export const handleNullValue = (value) => {
+  return value === "null" ? "N/A" : value;
 };

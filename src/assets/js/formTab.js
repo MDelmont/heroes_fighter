@@ -1,7 +1,7 @@
-import { env, data, takeList, datas } from "./datas";
-import { CreateElementWithProps, removeAccents } from "./utils";
-import { allCharacters, showPage, updatePageDisplay } from "./heroesTab/navigation";
-import { tBody } from "./heroesTab/main";
+import { takeList, datas } from "./datas";
+import { createElementWithProps, removeAccents } from "./utils";
+import { showPage, updatePageDisplay } from "./heroesTab/navigation";
+import { tabBody } from "./heroesTab/tableFunctions";
 
 let inputSearch;
 let publisherSelect;
@@ -12,9 +12,9 @@ let raceSelect;
  */
 export const createFormTab = () => {
   const mainContainer = document.querySelector("#content");
-  const formContainer = CreateElementWithProps("div", {className: "form-tab-part"})
+  const formContainer = createElementWithProps("div", {className: "form-tab-part"})
 
-  inputSearch = CreateElementWithProps("input", { placeholder: "Chercher un nom de héro", className: "inpt-filter-name" });
+  inputSearch = createElementWithProps("input", { placeholder: "Chercher un nom de héro", className: "inpt-filter-name" });
   inputSearch.addEventListener("input", () => filterTable());
   formContainer.appendChild(inputSearch);
 
@@ -38,9 +38,9 @@ export const createFormTab = () => {
  * @returns {HTMLElement} Le conteneur de sélecteur.
  */
 const createSelectContainer = (name, id) => {
-  const div = CreateElementWithProps("div", { className: "select-form-tab" })
+  const div = createElementWithProps("div", { className: "select-form-tab" })
 
-  const label = CreateElementWithProps("label", { textContent: name, for: id })
+  const label = createElementWithProps("label", { textContent: name, for: id })
   div.appendChild(label);
 
   const select = createSelectWithOptions(name, id);
@@ -57,17 +57,20 @@ const createSelectContainer = (name, id) => {
  * @returns {HTMLElement} Le sélecteur.
  */
 const createSelectWithOptions = (name, id) => {
-  const select = CreateElementWithProps("select", { className: "select-tab", id: id })
+  const select = createElementWithProps("select", { className: "select-tab", id: id })
 
   const optionsValues = takeList(removeAccents(name).toLowerCase());
   optionsValues.forEach((optionValue) => {
-    const option = CreateElementWithProps("option", { value: optionValue, textContent: optionValue });
+    const option = createElementWithProps("option", { value: optionValue, textContent: optionValue });
     select.appendChild(option);
   });
 
   return select;
 }
 
+/**
+ * Filtre en fonction des valeurs du nom, de l'éditeur et de la race
+ */
 const filterTable = () => {
   const searchValue = inputSearch.value;
   const publisherValue = publisherSelect.querySelector('select').value;
@@ -81,6 +84,6 @@ const filterTable = () => {
     return matchSearch && matchPublisher && matchRace
   });
 
-  showPage(1, tBody, characters);
+  showPage(1, tabBody, characters);
   updatePageDisplay(characters);
 };

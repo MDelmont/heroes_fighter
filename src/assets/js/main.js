@@ -3,11 +3,12 @@ import { selectHeroesPart } from "./selectHeros";
 import { createFormTab } from "./formTab";
 import { data } from "./datas";
 import{MakeheroesFighterPage} from "./herosFighterPage";
+import { createElementWithProps } from "./utils";
 
 export const creatMain = (page = "character") => {
-  let main = document.createElement("main");
-  main.id = "content";
+  const main = createElementWithProps("main", { id: "content" });
   document.body.appendChild(main);
+
   makeContentMain();
 };
 
