@@ -18,28 +18,22 @@ export const data = async () => {
 };
 
 export const takeList = (name) => {
-  let list = [""];
-  for (const data of datas.results) {
-    switch (name) {
-      case "race":
-        // Code à exécuter si expression correspond à race
-        if (!list.includes(data?.appearance?.race)) {
-          list.push(data?.appearance?.race);
-        }
-        break;
+  const list = new Set();
 
-      case "editeur":
-        // Code à exécuter si expression correspond à editeur
-        if (!list.includes(data?.biography?.publisher)) {
-          list.push(data?.biography?.publisher);
-        }
-        break;
-      case "name":
-        list.push([data?.id, data?.name]);
-        break;
+
+  for (const key in datas.results) {
+    const data = datas.results[key];
+
+    if (name === "race" && data.appearance?.race) {
+      list.add(data.appearance.race);
+    } else if (name === "editeur" && data.biography?.publisher) {
+      list.add(data.biography.publisher);
+    } else if (name === "name") {
+      list.add([data.id, data.name]);
     }
   }
-  return list;
+
+  return Array.from(list);
 };
 
 export const characterImage = (id) => {

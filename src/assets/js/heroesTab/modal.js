@@ -1,11 +1,13 @@
+import { CreateElementWithProps } from "../utils";
+
 /**
  * Crée une modale pour un personnage donné.
  * @param {Object} character - Les données du personnage.
  * @returns {HTMLElement} L'élément modale créé.
  */
 export const createModal = (character) => {
-  const modal = createElementWithClass("div", "modal");
-  const modalContent = createElementWithClass("div", "modal-content");
+  const modal = CreateElementWithProps("div", { className: "modal" });
+  const modalContent = CreateElementWithProps("div", { className: "modal-content" });
   const closeButton = createCloseButton();
 
   modalContent.appendChild(closeButton);
@@ -18,25 +20,11 @@ export const createModal = (character) => {
 };
 
 /**
- * Crée un élément HTML avec une classe donnée.
- * @param {string} element - Le nom de la balise de l'élément à créer.
- * @param {string} className - La classe à attribuer à l'élément.
- * @returns {HTMLElement} L'élément créé.
- */
-const createElementWithClass = (element, className) => {
-  const el = document.createElement(element);
-
-  el.classList.add(className);
-
-  return el;
-};
-
-/**
  * Crée le bouton de fermeture pour le modal.
  * @returns {HTMLElement} L'élément bouton de fermeture créé.
  */
 const createCloseButton = () => {
-  const closeButton = createElementWithClass("span", "close-button");
+  const closeButton = CreateElementWithProps("span", { className: "close-button"});
 
   closeButton.innerHTML = "&times;";
   closeButton.addEventListener("click", () => {
@@ -54,7 +42,7 @@ const createCloseButton = () => {
  * @returns {HTMLElement} La section d'en-tête créée.
  */
 const createHeaderSection = (character) => {
-  const header = createElementWithClass("div", "character-header");
+  const header = CreateElementWithProps("div", { className: "character-header"});
 
   header.innerHTML = `
     <img src="${character.image.url}" alt="${character.name}">
@@ -73,7 +61,7 @@ const createHeaderSection = (character) => {
  * @returns {HTMLElement} Le conteneur des catégories créé.
  */
 const createCategoriesContainer = (character) => {
-  const container = createElementWithClass("div", "categories-container");
+  const container = CreateElementWithProps("div", { className: "categories-container"});
 
   container.appendChild(
     createCategory("Biography", {
@@ -111,7 +99,7 @@ const createCategoriesContainer = (character) => {
  * @returns {HTMLElement} La section de catégorie créée.
  */
 const createCategory = (title, contents) => {
-  const category = createElementWithClass("div", "category");
+  const category = CreateElementWithProps("div", { className: "category"});
   let innerHTML = `<h3>${title}</h3>`;
 
   for (let content in contents) {
