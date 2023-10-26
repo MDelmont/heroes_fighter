@@ -19,7 +19,6 @@ export const data = async () => {
 
 export const takeList = (name) => {
   let list = [""];
-
   for (const data of datas.results) {
     switch (name) {
       case "race":
@@ -40,4 +39,23 @@ export const takeList = (name) => {
     }
   }
   return list;
+};
+
+export const characterImage = (id) => {
+  return fetch(`https://superheroapi.com/api.php/${env.token}/${id}/image`, {
+    method: "GET",
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Erreur HTTP! Statut : ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((image) => {
+      return image.url;
+    })
+    .catch((error) => {
+      console.error("Erreur : ", error);
+      return null;
+    });
 };

@@ -1,4 +1,5 @@
 import { makeContentMain } from "./main.js";
+import { characterImage } from "./datas.js";
 
 // Navbar listener
 
@@ -14,7 +15,25 @@ navBtns.forEach(function (navBtn) {
     });
 
     navBtn.classList.add("active");
-    console.log(navBtn.textContent);
     makeContentMain(navBtn.textContent);
   });
 });
+
+export const eventListenerSelectHereos = (selectHero) => {
+  console.log(selectHero);
+
+  selectHero.addEventListener("change", function () {
+    const selectedValue = selectHero.value;
+    const selectedIndex = selectHero.selectedIndex;
+    const selectedOption = selectHero.options[selectedIndex];
+    const img = selectHero.nextSibling;
+    const selectedOptionId = selectedOption.id.split("-")[1];
+    if (selectedValue != "") {
+      characterImage(selectedOptionId).then((urlimg) => {
+        img.src = urlimg;
+      });
+    } else {
+      img.src = "";
+    }
+  });
+};

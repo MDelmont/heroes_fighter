@@ -20,6 +20,7 @@ export const makeContentMain = (page = "characters") => {
         selectHeroesPart();
         makeFormTab();
         createHeroesTab();
+       
       })
       .catch((err) => {
         console.error("error", err);
