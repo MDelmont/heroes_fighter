@@ -10,9 +10,9 @@ $colorprimary: rgb(14, 5, 50);
   width: 70px;
 
   color: $textColor;
-  background-color: $bgColor;
+  background-color: white;
   font-size: 1.8rem;
-  border: 2px solid $colorprimary;
+  border: 2px solid $textColor;
   border-radius: 10px;
   transition: font-size 0.1s, background-color 0.1s;
   &:hover {
@@ -22,5 +22,14 @@ $colorprimary: rgb(14, 5, 50);
   &:active {
     font-size: 1.5rem;
     background-color: $bgColoractive;
+  }
+}
+
+button {
+  background-color: white;
+  color: $textColor;
+  border: 2px solid $textColor;
+  &:active {
+    background-color: $bgColorhover;
   }
 }

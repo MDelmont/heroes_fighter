@@ -1,26 +1,21 @@
 import { makeContentMain } from "./main.js";
 import { characterImage } from "./datas.js";
-import imgTransp from "../img/Transparent.psd";
 
-// Sélectionnez tous les éléments ayant une certaine classe CSS
-const navBtns = document.querySelectorAll(".title-page"); // Remplacez 'maClasse' par la classe que vous ciblez
-
-// Parcourez les éléments et ajoutez un gestionnaire d'événements à chacun
-navBtns.forEach(function (navBtn) {
+export const addEventListenerNav = (navBtn) => {
   navBtn.addEventListener("click", function () {
     let navBtncleans = document.querySelectorAll(".title-page");
     navBtncleans.forEach(function (navBtnclean) {
       navBtnclean.classList.remove("active");
     });
-
+    console.log(navBtn.textContent.toLowerCase());
     navBtn.classList.add("active");
-    makeContentMain(navBtn.textContent);
+
+    makeContentMain(navBtn.textContent.toLowerCase());
   });
-});
+};
+
 
 export const eventListenerSelectHereos = (selectHero) => {
-  console.log(selectHero);
-
   selectHero.addEventListener("change", function () {
     const selectedValue = selectHero.value;
     const selectedIndex = selectHero.selectedIndex;
@@ -28,10 +23,17 @@ export const eventListenerSelectHereos = (selectHero) => {
     const img = selectHero.nextSibling;
     const selectedOptionId = selectedOption.id.split("-")[1];
     if (selectedValue != "") {
-      characterImage(selectedOptionId).then((urlimg) => {
-        img.classList.remove("d-none");
-        img.src = urlimg;
-      });
+      characterImage(selectedOptionId)
+        .then((urlimg) => {
+          img.classList.remove("d-none");
+          img.src = urlimg;
+        })
+        .catch((err) => {
+          console.log("pas d'image");
+          if (!img.classList.contains("d-none")) {
+            img.classList.add("d-none");
+          }
+        });
     } else {
       img.classList.add("d-none");
     }

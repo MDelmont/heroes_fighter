@@ -2,6 +2,7 @@ import { createHeroesTab } from "./heroesTab/main";
 import { selectHeroesPart } from "./selectHeros";
 import { makeFormTab } from "./formTab";
 import { data } from "./datas";
+import{MakeheroesFighterPage} from "./herosFighterPage";
 
 export const creatMain = (page = "character") => {
   let main = document.createElement("main");
@@ -10,7 +11,7 @@ export const creatMain = (page = "character") => {
   makeContentMain();
 };
 
-export const makeContentMain = (page = "characters") => {
+export const makeContentMain = (page = "heroes fighter") => {
   const main = document.querySelector("#content");
   main.innerHTML = "";
 
@@ -20,10 +21,13 @@ export const makeContentMain = (page = "characters") => {
         selectHeroesPart();
         makeFormTab();
         createHeroesTab();
-       
       })
       .catch((err) => {
         console.error("error", err);
       });
+  } else if (page=='heroes fighter'){
+
+    MakeheroesFighterPage()
+    
   }
 };
