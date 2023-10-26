@@ -1,5 +1,5 @@
-import { createHeroesTab } from "./heroesTab";
-import { selectHeroesPart } from "./selectHeros"
+import { createHeroesTab } from "./heroesTab/main";
+import { selectHeroesPart } from "./selectHeros";
 import { makeFormTab } from "./formTab";
 import { data } from "./datas";
 
