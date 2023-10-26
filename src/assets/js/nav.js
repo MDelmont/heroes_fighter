@@ -1,19 +1,23 @@
-export const creatNav = () => {
+export const createNavBar = () => {
   let nav = document.createElement("nav");
   nav.classList.add("navigation");
 
-  let pages = ["Heroes fighter", "versus", "characters"];
+  const pageTitles = ["Heroes Fighter", "Versus", "Characters"];
 
-  for (const elem of pages) {
-    let div = document.createElement("div");
-    div.classList.add("title-page");
-    if ("characters" === elem)   div.classList.add("active");
-    let a = document.createElement("a");
-    a.href = `#${elem.replace(" ", "_")}`;
-    a.className = "nav-btn";
-    a.textContent = elem;
-    div.appendChild(a);
-    nav.appendChild(div);
-  }
+  pageTitles.forEach((title) => {
+    const navItem = document.createElement("div");
+    navItem.classList.add("title-page");
+
+    if (title === "Characters") navItem.classList.add("active");
+
+    const navLink = document.createElement("a");
+    navLink.href = `#${title.replace(" ", "_")}`;
+    navLink.className = "nav-btn";
+    navLink.textContent = title;
+
+    navItem.appendChild(navLink);
+    nav.appendChild(navItem);
+  });
+
   document.body.appendChild(nav);
 };

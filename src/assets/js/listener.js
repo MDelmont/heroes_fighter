@@ -12,6 +12,7 @@ navBtns.forEach(function (navBtn) {
     navBtncleans.forEach(function (navBtnclean) {
       navBtnclean.classList.remove("active");
     });
+
     navBtn.classList.add("active");
     console.log(navBtn.textContent);
     makeContentMain(navBtn.textContent);

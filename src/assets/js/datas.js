@@ -13,13 +13,13 @@ export const data = async () => {
       datas = data;
     })
     .catch((error) => {
-      console.log("blabla", error);
+      console.log("Erreur lors de l'importation des données", error);
     });
 };
 
 export const takeList = (name) => {
- 
-  let list = [''];
+  let list = [""];
+
   for (const data of datas.results) {
     switch (name) {
       case "race":

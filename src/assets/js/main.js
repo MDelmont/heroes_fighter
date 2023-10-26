@@ -12,11 +12,11 @@ export const creatMain = (page = "character") => {
 
 export const makeContentMain = (page = "characters") => {
   const main = document.querySelector("#content");
-
   main.innerHTML = "";
+
   if (page == "characters") {
     data()
-      .then((data) => {
+      .then(() => {
         selectHeroesPart();
         makeFormTab();
         createHeroesTab();
