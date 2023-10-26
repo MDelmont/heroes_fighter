@@ -1,5 +1,5 @@
 import { createHeroesTab } from "./heroesTab";
-import { selectHeroesPart } from "./select_heros.js";
+import { selectHeroesPart } from "./selectHeros"
 import { makeFormTab } from "./formTab";
 import { data } from "./datas";
 
@@ -15,16 +15,14 @@ export const makeContentMain = (page = "characters") => {
 
   main.innerHTML = "";
   if (page == "characters") {
-    data().then( (data) => {
-      selectHeroesPart()
-      makeFormTab()
-      createHeroesTab()
-    }
-    ).catch( (err) =>{
-      console.error('error',err)
-    }
-      
-    )
-    
+    data()
+      .then((data) => {
+        selectHeroesPart();
+        makeFormTab();
+        createHeroesTab();
+      })
+      .catch((err) => {
+        console.error("error", err);
+      });
   }
 };

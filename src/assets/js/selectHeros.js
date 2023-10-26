@@ -1,4 +1,5 @@
 import { makeButton } from "./button";
+import { takeList } from "./datas";
 export const selectHeroesPart = () => {
   const main = document.querySelector("#content");
   let divCont = document.createElement("div");
@@ -26,6 +27,21 @@ const makeSelectCont = () => {
 
   let select = document.createElement("select");
   select.className = "select-heroes";
+
+  const listOption = takeList("name");
+
+  listOption.forEach((perso) => {
+    let name = perso[1];
+    let id = perso[0];
+    if (perso == "") {
+      name = "";
+    }
+    let option = document.createElement("option");
+    option.value = name;
+    option.text = name;
+    option.id = `option-${id}`;
+    select.appendChild(option);
+  });
   let img = document.createElement("img");
   img.className = "img-heroes";
 
