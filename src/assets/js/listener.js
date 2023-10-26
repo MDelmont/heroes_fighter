@@ -7,7 +7,6 @@ export const addEventListenerNav = (navBtn) => {
     navBtncleans.forEach(function (navBtnclean) {
       navBtnclean.classList.remove("active");
     });
-    console.log(navBtn.textContent.toLowerCase());
     navBtn.classList.add("active");
 
     makeContentMain(navBtn.textContent.toLowerCase());

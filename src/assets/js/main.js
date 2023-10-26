@@ -2,8 +2,8 @@ import { createHeroesTab } from "./heroesTab/main";
 import { selectHeroesPart } from "./selectHeros";
 import { createFormTab } from "./formTab";
 import { data } from "./datas";
-
 import { MakeheroesFighterPage } from "./herosFighterPage";
+import { MakeVersusPage } from "./versusPage";
 import { createElementWithProps } from "./utils";
 
 export const creatMain = (page = "character") => {
@@ -29,5 +29,7 @@ export const makeContentMain = (page = "heroes fighter") => {
       });
   } else if (page == "heroes fighter") {
     MakeheroesFighterPage();
+  } else if (page == "versus") {
+    MakeVersusPage();
   }
 };

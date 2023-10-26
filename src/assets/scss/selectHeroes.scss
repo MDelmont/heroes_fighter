@@ -39,60 +39,40 @@ $bgColoractive: rgb(255, 183, 0);
       }
     }
   }
-    .versus {
-      position: relative;
-      font-size: 2rem;
-      animation: size 0.7s infinite alternate; /* Animation "blink" */
-      width: 100px;
-      height: 100px;
+}
+.versus {
+  position: relative;
+  font-size: 2rem;
+  animation: size 0.7s infinite alternate; /* Animation "blink" */
+  width: 100px;
+  height: 100px;
 
-      p {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin: 0;
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0;
 
-        color: white;
-        -webkit-text-stroke: 3px $activeColor; /* Épaisseur et couleur du "stroke" */
-        animation: blink 0.7s infinite alternate; /* Animation "blink" */
-        transform: translateX(-50%) translateY(-50%);
-      }
-    .versus {
-      position: relative;
-      font-size: 2rem;
-      animation: size 0.7s infinite alternate; /* Animation "blink" */
-      width: 100px;
-      height: 100px;
-
-      p {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin: 0;
-
-        color: white;
-        -webkit-text-stroke: 3px $activeColor; /* Épaisseur et couleur du "stroke" */
-        animation: blink 0.7s infinite alternate; /* Animation "blink" */
-        transform: translateX(-50%) translateY(-50%);
-      }
-    }
-
-    @keyframes blink {
-      from {
-        color: white;
-      }
-      to {
-        color: $bgColoractive; /* Couleur du texte lorsque visible */
-      }
-    }
+    color: white;
+    -webkit-text-stroke: 3px $activeColor; /* Épaisseur et couleur du "stroke" */
+    animation: blink 0.7s infinite alternate; /* Animation "blink" */
+    transform: translateX(-50%) translateY(-50%);
   }
-  @keyframes size {
-    from {
-      font-size: 2rem;
-    }
-    to {
-      font-size: 3rem; /* Couleur du texte lorsque visible */
-    }
+}
+@keyframes blink {
+  from {
+    color: white;
+  }
+  to {
+    color: $bgColoractive; /* Couleur du texte lorsque visible */
+  }
+}
+@keyframes size {
+  from {
+    font-size: 2rem;
+  }
+  to {
+    font-size: 3rem; /* Couleur du texte lorsque visible */
   }
 }
 @media (min-width: 425px) {
@@ -204,4 +184,3 @@ $bgColoractive: rgb(255, 183, 0);
     }
   }
 }
-
