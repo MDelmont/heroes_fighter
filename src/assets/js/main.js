@@ -1,5 +1,6 @@
 import { createHeroesTab } from "./heroesTab";
 import { selectHeroesPart } from "./select_heros.js";
+import { makeFormTab } from "./formTab";
 
 export const creatMain = (page = "character") => {
   let main = document.createElement("main");
@@ -14,6 +15,7 @@ export const makeContentMain = (page = "characters") => {
   main.innerHTML = "";
   if (page == "characters") {
     selectHeroesPart();
+    makeFormTab();
     createHeroesTab();
   }
 };
