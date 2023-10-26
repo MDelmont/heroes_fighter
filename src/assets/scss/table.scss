@@ -82,13 +82,17 @@ table {
     }
   }
 }
+
 #tableNav {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   span {
-    margin: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: clamp(160px, 50%, 200px);
+    text-align: center;
   }
   button {
     height: 20%;

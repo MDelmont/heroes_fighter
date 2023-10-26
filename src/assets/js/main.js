@@ -2,7 +2,7 @@ import { createHeroesTab } from "./heroesTab/main";
 import { selectHeroesPart } from "./selectHeros";
 import { createFormTab } from "./formTab";
 import { data } from "./datas";
-import{MakeheroesFighterPage} from "./herosFighterPage";
+import { MakeheroesFighterPage } from "./herosFighterPage";
 
 export const creatMain = (page = "character") => {
   let main = document.createElement("main");
@@ -25,9 +25,7 @@ export const makeContentMain = (page = "heroes fighter") => {
       .catch((err) => {
         console.error("error", err);
       });
-  } else if (page=='heroes fighter'){
-
-    MakeheroesFighterPage()
-    
+  } else if (page == "heroes fighter") {
+    MakeheroesFighterPage();
   }
 };

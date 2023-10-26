@@ -1,16 +1,64 @@
 .form-tab-part {
   position: relative;
   display: flex;
+  flex-direction: column;
   width: 80%;
   justify-content: space-between;
+  align-items: center;
   left: 50%;
   transform: translateX(-50%);
-  
+  margin-top: 30px;
+
   .inpt-filter-name {
-    width: 200px;
+    transition: width 0.5s;
+    width: 220px;
   }
-  .select-tab {
-    margin-left: 10px;
-    width: 200px;
+  .select-form-tab {
+    display: flex;
+    padding-top: 10px;
+    justify-content: space-between;
+    transition: width 0.5s;
+    width: 220px;
+    .select-tab {
+      padding: auto;
+      margin-left: 10px;
+      width: 150px;
+      transition: width 0.5s;
+    }
+  }
+}
+
+@media (min-width: 375px) {
+  .form-tab-part {
+    .inpt-filter-name {
+      width: 250px;
+    }
+    .select-form-tab {
+      width: 250px;
+      .select-tab {
+        width: 170px;
+      }
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .form-tab-part {
+   
+    flex-direction: row;
+
+    .inpt-filter-name {
+      width: 220px;
+    }
+    .select-form-tab {
+      display: flex;
+      justify-content: space-between;
+      width: 220px;
+      .select-tab {
+        padding: auto;
+        margin-left: 10px;
+        width: 150px;
+      }
+    }
   }
 }

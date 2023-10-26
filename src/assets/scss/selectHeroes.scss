@@ -5,45 +5,55 @@ $bgColoractive: rgb(255, 183, 0);
 .Select-heroes-part {
   position: relative;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-start;
   margin-top: 30px;
-
   align-items: center;
   width: 80%;
   left: 50%;
-  height: 200px;
+  height: 250px;
   transform: translateX(-50%);
-  .Select-heroes-cont {
+  .Select-heroes-personnage-part {
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
+    width: 80%;
+    height: 200px;
+    margin-bottom: 20px;
     align-items: center;
-    width: 20%;
-    .select-heroes {
-      width: clamp(100px, 80%, 200px);
-    }
-    .img-heroes {
-      width: clamp(75px, 40%, 150px);
+    .Select-heroes-cont {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 20%;
+      .select-heroes {
+        width: clamp(100px, 80%, 200px);
+      }
+      .img-heroes {
+        width: clamp(75px, 30%, 150px);
 
-      aspect-ratio: 480/640;
-      background-color: bleu;
+        aspect-ratio: 480/640;
+        background-color: bleu;
+      }
     }
-  }
 
-  .versus {
-    position: relative;
-    font-size: 3rem;
-    animation: size 0.7s infinite alternate; /* Animation "blink" */
-    width: 100px;
-    height: 100px;
-    p {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin: 0;
-      color: white;
-      -webkit-text-stroke: 3px $activeColor; /* Épaisseur et couleur du "stroke" */
-      animation: blink 0.7s infinite alternate; /* Animation "blink" */
-      transform: translateX(-50%) translateY(-50%);
+    .versus {
+      position: relative;
+      font-size: 2rem;
+      animation: size 0.7s infinite alternate; /* Animation "blink" */
+      width: 100px;
+      height: 100px;
+
+      p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: 0;
+
+        color: white;
+        -webkit-text-stroke: 3px $activeColor; /* Épaisseur et couleur du "stroke" */
+        animation: blink 0.7s infinite alternate; /* Animation "blink" */
+        transform: translateX(-50%) translateY(-50%);
+      }
     }
 
     @keyframes blink {
@@ -57,10 +67,66 @@ $bgColoractive: rgb(255, 183, 0);
   }
   @keyframes size {
     from {
+      font-size: 2rem;
+    }
+    to {
+      font-size: 3rem; /* Couleur du texte lorsque visible */
+    }
+  }
+}
+@media (min-width: 425px) {
+  .Select-heroes-part {
+    .Select-heroes-personnage-part {
+      .Select-heroes-cont {
+        .select-heroes {
+        }
+        .img-heroes {
+          width: clamp(100px, 50%, 200px);
+        }
+      }
+
+      .versus {
+        font-size: 3rem;
+        p {
+        }
+      }
+    }
+  }
+  @keyframes size {
+    from {
       font-size: 3rem;
     }
     to {
-      font-size: 5rem; /* Couleur du texte lorsque visible */
+      font-size: 4rem; /* Couleur du texte lorsque visible */
     }
   }
+}
+
+@media (min-width: 768px) {
+  .Select-heroes-part {
+    .Select-heroes-personnage-part {
+      .Select-heroes-cont {
+        .select-heroes {
+        }
+        .img-heroes {
+        }
+      }
+
+      .versus {
+        font-size: 5rem;
+        p {
+        }
+      }
+    }
+  }
+  @keyframes size {
+    from {
+      font-size: 5rem;
+    }
+    to {
+      font-size: 7rem; /* Couleur du texte lorsque visible */
+    }
+  }
+}
+@media (min-width: 1024px) {
 }
