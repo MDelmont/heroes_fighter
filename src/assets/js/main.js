@@ -1,6 +1,6 @@
 import { createHeroesTab } from "./heroesTab/main";
 import { selectHeroesPart } from "./selectHeros";
-import { makeFormTab } from "./formTab";
+import { createFormTab } from "./formTab";
 import { data } from "./datas";
 
 export const creatMain = (page = "character") => {
@@ -18,9 +18,8 @@ export const makeContentMain = (page = "characters") => {
     data()
       .then(() => {
         selectHeroesPart();
-        makeFormTab();
+        createFormTab();
         createHeroesTab();
-       
       })
       .catch((err) => {
         console.error("error", err);
