@@ -1,0 +1,15 @@
+.form-tab-part {
+  position: relative;
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  left: 50%;
+  transform: translateX(-50%);
+  #inpt-filter-name {
+    width: 200px;
+  }
+  .select-tab {
+    margin-left: 10px;
+    width: 150px;
+  }
+}
