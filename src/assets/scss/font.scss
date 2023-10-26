@@ -15,7 +15,8 @@
 a,
 h1,
 .versus p,
-button {
+button,
+.cont-info h2 {
   font-family: "Bangers", sans-serif;
 }
 
@@ -25,10 +26,16 @@ th,
 td,
 #tableNav span,
 input,
-label {
+label,
+select {
   font-family: "Architects_Daughter", sans-serif;
 }
 
 .d-none {
   display: none;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
 }

@@ -1,3 +1,5 @@
+import { addEventListenerNav } from "./listener";
+
 export const createNavBar = () => {
   let nav = document.createElement("nav");
   nav.classList.add("navigation");
@@ -8,14 +10,15 @@ export const createNavBar = () => {
     const navItem = document.createElement("div");
     navItem.classList.add("title-page");
 
-    if (title === "Characters") navItem.classList.add("active");
+    if (title === "Heroes Fighter") navItem.classList.add("active");
 
     const navLink = document.createElement("a");
-    navLink.href = `#${title.replace(" ", "_")}`;
+    // navLink.href = `#${title.replace(" ", "_")}`;
     navLink.className = "nav-btn";
     navLink.textContent = title;
 
     navItem.appendChild(navLink);
+    addEventListenerNav(navItem);
     nav.appendChild(navItem);
   });
 

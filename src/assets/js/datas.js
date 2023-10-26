@@ -20,6 +20,7 @@ export const data = async () => {
 export const takeList = (name) => {
   const list = new Set();
 
+
   for (const key in datas.results) {
     const data = datas.results[key];
 

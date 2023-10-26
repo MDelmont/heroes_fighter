@@ -38,7 +38,6 @@ table {
     }
     &:nth-child(7) {
       width: 50px;
- 
     }
     &:nth-child(8) {
       width: 150px;
@@ -60,7 +59,9 @@ table {
   td {
     padding: 10px;
     border: 1px solid $textcolorhead;
-
+    a {
+      color: $activeColor;
+    }
     &:nth-child(2) {
       text-align: center;
     }
@@ -78,7 +79,6 @@ table {
     }
     &:nth-child(7) {
       text-align: center;
- 
     }
   }
 }

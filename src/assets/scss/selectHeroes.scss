@@ -1,7 +1,7 @@
 $colorprimary: rgb(14, 5, 50);
 $activeColor: rgb(67, 160, 31);
 $activeColor: rgb(217, 49, 49);
-
+$bgColoractive: rgb(255, 183, 0);
 .Select-heroes-part {
   position: relative;
   display: flex;
@@ -11,6 +11,7 @@ $activeColor: rgb(217, 49, 49);
   align-items: center;
   width: 80%;
   left: 50%;
+  height: 200px;
   transform: translateX(-50%);
   .Select-heroes-cont {
     display: flex;
@@ -29,10 +30,37 @@ $activeColor: rgb(217, 49, 49);
   }
 
   .versus {
-    font-size: 5rem;
+    position: relative;
+    font-size: 3rem;
+    animation: size 0.7s infinite alternate; /* Animation "blink" */
+    width: 100px;
+    height: 100px;
     p {
-      color: $activeColor;
-      -webkit-text-stroke: 3px $colorprimary; /* Épaisseur et couleur du "stroke" */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: 0;
+      color: white;
+      -webkit-text-stroke: 3px $activeColor; /* Épaisseur et couleur du "stroke" */
+      animation: blink 0.7s infinite alternate; /* Animation "blink" */
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    @keyframes blink {
+      from {
+        color: white;
+      }
+      to {
+        color: $bgColoractive; /* Couleur du texte lorsque visible */
+      }
+    }
+  }
+  @keyframes size {
+    from {
+      font-size: 3rem;
+    }
+    to {
+      font-size: 5rem; /* Couleur du texte lorsque visible */
     }
   }
 }
