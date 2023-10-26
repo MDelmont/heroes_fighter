@@ -6,47 +6,55 @@ $colorbglineeven: #fafafa;
 // Styles pour le tableau
 table {
   position: relative;
-  width: 80%;
+  width: 100%;
   border-collapse: collapse;
   border: 2px solid $colorprimary;
   margin-bottom: 20px;
 
   left: 50%;
   transform: translateX(-50%);
+  font-size: 0.6rem;
+  transition: font-size 0.5s;
   th {
     background-color: $colorprimary;
     color: $textcolorhead;
     padding: 10px;
     border: 1px solid $textcolorhead;
     &:nth-child(1) {
-      width: 150px;
+      width: 100px;
     }
     &:nth-child(2) {
       width: 50px;
+      display: none;
     }
     &:nth-child(3) {
       width: 50px;
+      display: none;
     }
     &:nth-child(4) {
       width: 50px;
+      display: none;
     }
     &:nth-child(5) {
       width: 50px;
+      display: none;
     }
     &:nth-child(6) {
       width: 50px;
+      display: none;
     }
     &:nth-child(7) {
       width: 50px;
+      display: none;
     }
     &:nth-child(8) {
-      width: 150px;
+      width: 100px;
     }
     &:nth-child(9) {
-      width: 75px;
+      width: 50px;
     }
     &:nth-child(10) {
-      width: 150px;
+      width: 100px;
     }
   }
   tr:nth-child(odd) {
@@ -64,33 +72,116 @@ table {
     }
     &:nth-child(2) {
       text-align: center;
+      display: none;
     }
     &:nth-child(3) {
       text-align: center;
+      display: none;
     }
     &:nth-child(4) {
       text-align: center;
+      display: none;
     }
     &:nth-child(5) {
       text-align: center;
+      display: none;
     }
     &:nth-child(6) {
       text-align: center;
+      display: none;
     }
     &:nth-child(7) {
       text-align: center;
+      display: none;
     }
   }
 }
+
 #tableNav {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   span {
-    margin: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: clamp(160px, 50%, 200px);
+    text-align: center;
   }
   button {
     height: 20%;
+  }
+}
+@media (min-width: 425px) {
+  table {
+    width: 80%;
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  table {
+    width: 80%;
+    th {
+      &:nth-child(1) {
+        width: 150px;
+      }
+      &:nth-child(2) {
+        width: 50px;
+        display: table-cell;
+      }
+      &:nth-child(3) {
+        width: 50px;
+        display: table-cell;
+      }
+      &:nth-child(4) {
+        width: 50px;
+        display: table-cell;
+      }
+      &:nth-child(5) {
+        width: 50px;
+        display: table-cell;
+      }
+      &:nth-child(6) {
+        width: 50px;
+        display: table-cell;
+      }
+      &:nth-child(7) {
+        width: 50px;
+        display: table-cell;
+      }
+      &:nth-child(8) {
+        width: 150px;
+      }
+      &:nth-child(9) {
+        width: 75px;
+      }
+      &:nth-child(10) {
+        width: 150px;
+      }
+    }
+
+    td {
+      a {
+      }
+      &:nth-child(2) {
+        display: table-cell;
+      }
+      &:nth-child(3) {
+        display: table-cell;
+      }
+      &:nth-child(4) {
+        display: table-cell;
+      }
+      &:nth-child(5) {
+        display: table-cell;
+      }
+      &:nth-child(6) {
+        display: table-cell;
+      }
+      &:nth-child(7) {
+        display: table-cell;
+      }
+    }
   }
 }

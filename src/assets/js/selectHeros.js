@@ -15,10 +15,15 @@ export const selectHeroesPart = () => {
   versus.appendChild(text);
   let select2 = makeSelectCont();
   select2.id = "select-heroes-2";
-  divCont.appendChild(select1);
-  divCont.appendChild(versus);
-  divCont.appendChild(select2);
+
+  let divpersonnage = document.createElement("div");
+  divpersonnage.className = "Select-heroes-personnage-part";
+  divpersonnage.appendChild(select1);
+  divpersonnage.appendChild(versus);
+  divpersonnage.appendChild(select2);
+  divCont.append(divpersonnage);
   divCont.appendChild(makeButton("Versus", "btn-standard", "Go"));
+
   main.appendChild(divCont);
 };
 
