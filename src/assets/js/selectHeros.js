@@ -57,7 +57,8 @@ const makeSelectCont = (id = null, imgUrl = null) => {
   id ? (select.selectedIndex = id - 1) : null;
   let img = document.createElement("img");
   img.className = "img-heroes d-none";
-  imgUrl ? (img.src = imgUrl) : null;
+
+  img.src = img.src ?? imgUrl;
 
   div.appendChild(select);
   div.appendChild(img);

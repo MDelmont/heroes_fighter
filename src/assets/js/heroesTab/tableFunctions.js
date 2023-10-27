@@ -86,7 +86,6 @@ export const sortTableByColumn = (columnIndex, tabBody) => {
 export const addDataRow = (character, tabBody) => {
   const dataRow = document.createElement("tr");
   const nameData = document.createElement("td");
-  console.log(character);
 
   const nameLink = createElementWithProps("a", {
     href: "#",
