@@ -18,16 +18,17 @@ export const removeAccents = (str) => {
 export const createElementWithProps = (element, options = {}) => {
   const el = document.createElement(element);
 
-  if (options.className) el.classList.add(options.className);
   if (options.id) el.id = options.id;
+  if (options.className) el.classList.add(options.className);
+  if (options.name) el.name = options.name;
+  if (options.type) el.type = options.type;
   if (options.placeholder) el.placeholder = options.placeholder;
   if (options.textContent) el.textContent = options.textContent;
-  if (options.value) el.value = options.value;
-  if (options.type) el.type = options.type;
-  if (options.name) el.name = options.name;
-  if (options.for) el.for = options.for;
   if (options.innerText) el.innerText = options.innerText;
+  if (options.innerHTML) el.innerHTML = options.innerHTML;
+  if (options.value) el.value = options.value;
   if (options.href) el.href = options.href;
+  if (options.for) el.for = options.for;
 
   return el;
 };

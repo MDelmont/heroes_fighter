@@ -1,4 +1,4 @@
-import { createElementWithProps } from "../utils";
+import { createElementWithProps, handleNullValue } from "../utils";
 
 /**
  * Crée une modale pour un personnage donné.
@@ -24,7 +24,8 @@ export const createModal = (character) => {
  * @returns {HTMLElement} L'élément bouton de fermeture créé.
  */
 const createCloseButton = () => {
-  const closeButton = createElementWithProps("span", { className: "close-button", innerText: "&times;" });
+  const closeButton = createElementWithProps("span", { className: "close-button", innerHTML: "&times;" });
+  // closeButton.inn
   closeButton.addEventListener("click", () => {
     const modal = closeButton.closest(".modal");
     modal.style.display = "none";
@@ -101,7 +102,7 @@ const createCategory = (title, contents) => {
   let innerHTML = `<h3>${title}</h3>`;
 
   for (let content in contents) {
-    innerHTML += `<p><strong>${ content.charAt(0).toUpperCase() + content.slice(1) }:</strong> ${contents[content]}</p>`;
+    innerHTML += `<p><strong>${ content.charAt(0).toUpperCase() + content.slice(1) }:</strong> ${handleNullValue(contents[content])}</p>`;
   }
 
   category.innerHTML = innerHTML;
