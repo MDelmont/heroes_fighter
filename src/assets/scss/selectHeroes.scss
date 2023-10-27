@@ -2,7 +2,7 @@ $colorprimary: rgb(14, 5, 50);
 $activeColor: rgb(67, 160, 31);
 $activeColor: rgb(217, 49, 49);
 $bgColoractive: rgb(255, 183, 0);
-.Select-heroes-part {
+.select-heroes-part {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,7 @@ $bgColoractive: rgb(255, 183, 0);
     height: 200px;
     margin-bottom: 20px;
     align-items: center;
-    .Select-heroes-cont {
+    .select-heroes-cont {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -76,11 +76,9 @@ $bgColoractive: rgb(255, 183, 0);
   }
 }
 @media (min-width: 425px) {
-  .Select-heroes-part {
+  .select-heroes-part {
     .Select-heroes-personnage-part {
-      .Select-heroes-cont {
-        .select-heroes {
-        }
+      .select-heroes-cont {
         .img-heroes {
           width: clamp(100px, 50%, 200px);
         }
@@ -103,11 +101,9 @@ $bgColoractive: rgb(255, 183, 0);
   }
 }
 @media (min-width: 425px) {
-  .Select-heroes-part {
+  .select-heroes-part {
     .Select-heroes-personnage-part {
-      .Select-heroes-cont {
-        .select-heroes {
-        }
+      .select-heroes-cont {
         .img-heroes {
           width: clamp(100px, 50%, 200px);
         }
@@ -131,14 +127,8 @@ $bgColoractive: rgb(255, 183, 0);
 }
 
 @media (min-width: 768px) {
-  .Select-heroes-part {
+  .select-heroes-part {
     .Select-heroes-personnage-part {
-      .Select-heroes-cont {
-        .select-heroes {
-        }
-        .img-heroes {
-        }
-      }
 
       .versus {
         font-size: 5rem;
@@ -159,14 +149,8 @@ $bgColoractive: rgb(255, 183, 0);
 }
 
 @media (min-width: 768px) {
-  .Select-heroes-part {
+  .select-heroes-part {
     .Select-heroes-personnage-part {
-      .Select-heroes-cont {
-        .select-heroes {
-        }
-        .img-heroes {
-        }
-      }
 
       .versus {
         font-size: 5rem;

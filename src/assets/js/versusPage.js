@@ -4,28 +4,28 @@ import imgArmWrestling from "../img/test/armWrestling.png";
 import imgFight from "../img/test/fight.png";
 import {
   getStatsgame,
-  getheroes1,
-  getheroes2,
+  gethero1,
+  gethero2,
   getlistGame,
   gettestResult,
   whoWin,
 } from "./game.js";
 import {
-  eventListenerbuttonchoiseHeroes,
-  eventListenerbuttonresetchoiseHeroes,
-  eventListenerbuttonstartGameHeroes,
+  eventListenerButtonChooseHeroes,
+  eventListenerButtonResetChoiceHeroes,
+  eventListenerButtonStartGameHeroes,
 } from "./listener";
 
 export const MakeVersusPage = () => {
   const main = document.querySelector("#content");
 
   let buttonSelectHeroes = makeButtonVersus("Select Heroes");
-  eventListenerbuttonchoiseHeroes(buttonSelectHeroes);
+  eventListenerButtonChooseHeroes(buttonSelectHeroes);
   getStatsgame().stepGame == "init"
     ? main.appendChild(makeBandeauContVersus(buttonSelectHeroes))
     : null;
   let startBtn = makeButtonVersus("Stats Tests", "green", "start-game-btn");
-  eventListenerbuttonstartGameHeroes(startBtn);
+  eventListenerButtonStartGameHeroes(startBtn);
   getStatsgame().stepGame == "start"
     ? main.appendChild(makeBandeauContVersus(makeHerosVersus())) &
       main.appendChild(makeBandeauContVersus(startBtn))
@@ -41,8 +41,8 @@ export const MakeVersusPage = () => {
       main.appendChild(
         makeBandeauContVersus(
           makeContTestGameVersus(listGame[key], key, testResult[key], [
-            [getheroes1().name, getheroes1().image.url],
-            [getheroes2().name, getheroes2().image.url],
+            [gethero1().name, gethero1().image.url],
+            [gethero2().name, gethero2().image.url],
           ])
         )
       );
@@ -77,11 +77,11 @@ const makeHerosVersus = () => {
   divherosCont.className = "part-versus-heroes";
   let divHeros = document.createElement("div");
   divHeros.className = "cont-versus-heroes";
-  let heroes1 = getheroes1();
-  let heroes2 = getheroes2();
+  let hero1 = gethero1();
+  let hero2 = gethero2();
 
-  let card1 = makeHerosCard(heroes1?.name, heroes1?.image?.url);
-  let card2 = makeHerosCard(heroes2?.name, heroes2?.image?.url);
+  let card1 = makeHerosCard(hero1?.name, hero1?.image?.url);
+  let card2 = makeHerosCard(hero2?.name, hero2?.image?.url);
   let versus = document.createElement("div");
 
   versus.className = "versus";
@@ -100,7 +100,7 @@ const makeHerosVersus = () => {
     "blue",
     "reset-character-btn"
   );
-  eventListenerbuttonresetchoiseHeroes(resetbtn);
+  eventListenerButtonResetChoiceHeroes(resetbtn);
   divherosCdivbutton.append(resetbtn);
 
   divherosCont.append(divHeros);

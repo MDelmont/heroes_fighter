@@ -1,6 +1,6 @@
 import {} from "./versusPage";
-export let heroes1;
-export let heroes2;
+export let hero1;
+export let hero2;
 let stepGame = "init"; //init,start,tests,finish
 let scorePlayer1 = 0;
 let scorePlayer2 = 0;
@@ -23,18 +23,18 @@ export const getlistGame = () => {
 export const gettestResult = () => {
   return testsResult;
 };
-export const getheroes1 = () => {
-  return heroes1;
+export const gethero1 = () => {
+  return hero1;
 };
-export const getheroes2 = () => {
-  return heroes2;
+export const gethero2 = () => {
+  return hero2;
 };
 
-export const setheroes1 = (heroes) => {
-  heroes1 = heroes;
+export const sethero1 = (hero) => {
+  hero1 = hero;
 };
-export const setheroes2 = (heroes) => {
-  heroes2 = heroes;
+export const sethero2 = (hero) => {
+  hero2 = hero;
 };
 
 export const getstepGame = () => {
@@ -51,8 +51,8 @@ export const setstepGame = (step) => {
 export const getStatsgame = () => {
   return {
     stepGame,
-    heroes1,
-    heroes2,
+    hero1,
+    hero2,
     scorePlayer1,
     scorePlayer2,
     testsResult,
@@ -60,13 +60,13 @@ export const getStatsgame = () => {
 };
 
 export const resetGame = () => {
-  heroes1 = undefined;
-  heroes2 = undefined;
+  hero1 = undefined;
+  hero2 = undefined;
   stepGame = "init";
 };
 
-export const makeHeroes = (heroes, number) => {
-  number === 1 ? (heroes1 = heroes) : (heroes2 = heroes);
+export const makehero = (hero, number) => {
+  number === 1 ? (hero1 = hero) : (hero2 = hero);
 };
 
 export const runGameVersus = () => {
@@ -79,8 +79,8 @@ export const runGameVersus = () => {
     let hero2Score = 0;
 
     gameStats[gameKey].forEach(stat => {
-      hero1Score += parseInt(heroes1.powerstats[stat], 10) || 0;
-      hero2Score += parseInt(heroes2.powerstats[stat], 10) || 0;
+      hero1Score += parseInt(hero1.powerstats[stat], 10) || 0;
+      hero2Score += parseInt(hero2.powerstats[stat], 10) || 0;
     })
 
 
@@ -99,5 +99,5 @@ export const runGameVersus = () => {
 };
 
 export const whoWin = () => {
-  return scorePlayer1 > scorePlayer2 ? heroes1 : heroes2;
+  return scorePlayer1 > scorePlayer2 ? hero1 : hero2;
 };
