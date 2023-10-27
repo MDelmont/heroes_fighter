@@ -1,5 +1,6 @@
 import { makeContentMain } from "./main.js";
 import { characterImage } from "./datas.js";
+import { heroes1, heroes2 } from "./game.js";
 
 export const addEventListenerNav = (navBtn) => {
   navBtn.addEventListener("click", function () {
@@ -12,7 +13,6 @@ export const addEventListenerNav = (navBtn) => {
     makeContentMain(navBtn.textContent.toLowerCase());
   });
 };
-
 
 export const eventListenerSelectHereos = (selectHero) => {
   selectHero.addEventListener("change", function () {
@@ -36,5 +36,19 @@ export const eventListenerSelectHereos = (selectHero) => {
     } else {
       img.classList.add("d-none");
     }
+  });
+};
+
+export const eventListenerbuttonchoiseHeroes = (buttonselectHeroes) => {
+  buttonselectHeroes.addEventListener("click", function () {
+    let navBtncleans = document.querySelectorAll(".title-page");
+    console.log(navBtncleans);
+    navBtncleans.forEach(function (navBtnclean) {
+      navBtnclean.classList.remove("active");
+      if (navBtnclean.textContent == "Characters") {
+        navBtnclean.classList.add("active");
+      }
+      makeContentMain("characters");
+    });
   });
 };

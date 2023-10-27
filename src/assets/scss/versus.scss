@@ -4,6 +4,7 @@ $bgColoractive: rgb(255, 183, 0);
 $activeColor: rgb(217, 49, 49);
 $looseColor: rgb(186, 44, 44);
 $winColor: rgb(26, 149, 77);
+
 .versus-bandeau {
   padding-bottom: 0px;
   .cont-info {
@@ -34,31 +35,44 @@ $winColor: rgb(26, 149, 77);
         font-size: 1.4rem;
       }
     }
-
-    .cont-versus-heroes {
-      position: relative;
+    .part-versus-heroes {
       display: flex;
-      justify-content: center;
-      width: 90%;
-      align-items: center;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      transition: width 0.5s;
-      .versus {
-        width: 34%;
-      }
-      .heroes-card {
-        width: 33%;
-
-        img {
-          width: 100%;
-          aspect-ratio: 480/640;
-          transition: width 0.5s;
+      flex-direction: column;
+      padding-bottom: 30px;
+      .cont-versus-heroes-button {
+        position: relative;
+        width: 100%;
+        button {
+          margin-top: 20px;
+          position: absolute;
         }
-        p {
-          color: $colorprimary;
-          transition: font-size 0.5s;
+      }
+      .cont-versus-heroes {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 90%;
+        align-items: center;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        transition: width 0.5s;
+        padding-bottom: 20px;
+        .versus {
+          width: 34%;
+        }
+        .heroes-card {
+          width: 33%;
+
+          img {
+            width: 100%;
+            aspect-ratio: 480/640;
+            transition: width 0.5s;
+          }
+          p {
+            color: $colorprimary;
+            transition: font-size 0.5s;
+          }
         }
       }
     }
