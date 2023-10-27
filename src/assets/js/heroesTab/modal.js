@@ -37,7 +37,7 @@ const createCloseButton = () => {
 
 /**
  * Crée la section d'en-tête pour la modale.
- * @param {Object} character - Les données du personnage.
+ * @param {object} character - Les données du personnage.
  * @returns {HTMLElement} La section d'en-tête créée.
  */
 const createHeaderSection = (character) => {

@@ -1,19 +1,26 @@
 import { makeButton } from "./button";
 import { takeList } from "./datas";
 import {
-  eventListenerSelectHereos,
-  eventListenerbuttonGocharacter,
+  eventListenerSelectHeroes,
+  eventListenerButtonGoCharacter,
 } from "./listener";
 import { getStatsgame } from "./game";
+import { createElementWithProps } from "./utils";
 
 export const selectHeroesPart = () => {
-  let statsGame = getStatsgame();
-
   const main = document.querySelector("#content");
-  let divCont = document.createElement("div");
-  let id1 = statsGame?.heroes1?.id;
-  let imgUrl1 = statsGame?.heroes1?.image?.url;
-  divCont.className = "Select-heroes-part";
+  const div = createElementWithProps("div", { className: "select-heroes-part" });
+
+  const statsGame = getStatsgame();
+
+  const hero1 = statsGame.hero1;
+  const id1 = hero1?.id;
+  const imgUrl1 = hero1?.image.url;
+
+  const hero2 = statsGame.hero2;
+  const id2 = hero2?.id;
+  const imgUrl2 = hero2?.image.url;
+
   let select1 = makeSelectCont(id1, imgUrl1);
   select1.id = "select-heroes-1";
   let versus = document.createElement("div");
@@ -21,8 +28,6 @@ export const selectHeroesPart = () => {
   let text = document.createElement("p");
   text.textContent = "VS";
   versus.appendChild(text);
-  let id2 = statsGame?.heroes2?.id;
-  let imgUrl2 = statsGame?.heroes2?.image?.url;
   let select2 = makeSelectCont(id2, imgUrl2);
   select2.id = "select-heroes-2";
 
@@ -31,20 +36,19 @@ export const selectHeroesPart = () => {
   divpersonnage.appendChild(select1);
   divpersonnage.appendChild(versus);
   divpersonnage.appendChild(select2);
-  divCont.append(divpersonnage);
+  div.append(divpersonnage);
   let button = makeButton("Versus", "btn-standard", "Go");
-  eventListenerbuttonGocharacter(button);
-  divCont.appendChild(button);
+  eventListenerButtonGoCharacter(button);
+  div.appendChild(button);
 
-  main.appendChild(divCont);
+  main.appendChild(div);
 };
 
 const makeSelectCont = (id = null, imgUrl = null) => {
-  let div = document.createElement("div");
-  div.className = "Select-heroes-cont";
-  let select = document.createElement("select");
-  select.className = "select-heroes";
-  eventListenerSelectHereos(select);
+  const div = createElementWithProps("div", { className: "select-heroes-cont"});
+  const select = createElementWithProps("select", { className: "select-heroes" })
+
+  eventListenerSelectHeroes(select);
 
   const listOption = takeList("name");
   listOption.forEach((perso) => {
@@ -59,7 +63,12 @@ const makeSelectCont = (id = null, imgUrl = null) => {
     option.id = `option-${id}`;
     select.appendChild(option);
   });
+
   id ? (select.selectedIndex = id - 1) : null;
+  id ?? (select.selectedIndex = id - 1);
+
+  if (id) select.selectedIndex = id - 1;
+
   let img = document.createElement("img");
   imgUrl
     ? (img.className = "img-heroes ")

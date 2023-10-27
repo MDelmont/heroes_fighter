@@ -1,10 +1,10 @@
 import { createContentMain } from "./main.js";
 import { characterImage, takecharacterByID } from "./datas.js";
 import {
-  getheroes1,
-  getheroes2,
-  setheroes1,
-  setheroes2,
+  gethero1,
+  gethero2,
+  sethero1,
+  sethero2,
   setstepGame,
   resetGame,
   runGameVersus,
@@ -21,95 +21,89 @@ export const addEventListenerNav = (navBtn) => {
   });
 };
 
-export const eventListenerSelectHereos = (selectHero) => {
-  selectHero.addEventListener("change", function () {
-    const selectedValue = selectHero.value;
-    const selectedIndex = selectHero.selectedIndex;
-    const selectedOption = selectHero.options[selectedIndex];
-    const parentid = selectHero.parentElement.id;
-    const img = selectHero.nextSibling;
-    const selectedOptionId = selectedOption.id.split("-")[1];
+export const eventListenerSelectHeroes = (selectHero) => {
+  selectHero.addEventListener("change", () => {
+    const { value: selectedValue, selectedIndex, parentElement: { id: parentId }, nextSibling: img } = selectHero;
+    const selectedOptionId = selectHero.options[selectedIndex].id.split("-")[1];
 
-    if (parentid === "select-heroes-1") {
-      setheroes1(takecharacterByID(selectedOptionId));
-    } else if (parentid === "select-heroes-2") {
-      setheroes2(takecharacterByID(selectedOptionId));
-    }
-    if (selectedValue != "") {
-      characterImage(selectedOptionId)
-        .then((urlimg) => {
-          img.classList.remove("d-none");
-          img.src = urlimg;
-        })
-        .catch((err) => {
-          console.log("pas d'image");
-          if (!img.classList.contains("d-none")) {
-            img.classList.add("d-none");
-          }
-        });
-    } else {
-      img.classList.add("d-none");
+    switch (parentId) {
+      case "select-heroes-1":
+          sethero1(takecharacterByID(selectedOptionId));
+          break;
+      case "select-heroes-2":
+          sethero2(takecharacterByID(selectedOptionId));
+          break;
+      default:
+          break;
     }
 
-    if (getheroes1() && getheroes2()) {
-      setstepGame("start");
-    }
+    updateImageSource(selectedValue, selectedOptionId, img);
+
+    if (gethero1() && gethero2()) setstepGame("start");
   });
 };
 
-export const eventListenerbuttonchoiseHeroes = (buttonselectHeroes) => {
-  buttonselectHeroes.addEventListener("click", function () {
-    let navBtncleans = document.querySelectorAll(".title-page");
-    navBtncleans.forEach(function (navBtnclean) {
-      navBtnclean.classList.remove("active");
-      if (navBtnclean.textContent == "Characters") {
-        navBtnclean.classList.add("active");
-      }
+const updateImageSource = (selectedValue, selectedOptionId, img) => {
+  if (selectedValue === "") return img.classList.add("d-none");
+
+  characterImage(selectedOptionId)
+    .then((imgSrc) => {
+      img.classList.remove("d-none");
+      img.src = imgSrc;    
+    })
+    .catch((err) => {
+      console.log("Pas d'image disponible", err);
+      if (!img.classList.contains("d-none")) img.classList.add("d-none");
+    });
+};
+
+export const eventListenerButtonChooseHeroes = (buttonselectHeroes) => {
+  buttonselectHeroes.addEventListener("click", () => {
+    const navBtns = document.querySelectorAll(".title-page");
+
+    navBtns.forEach((navBtn) => {
+      navBtn.classList.remove("active");
+      if (navBtn.textContent == "Characters") navBtn.classList.add("active");
+
       createContentMain("characters");
     });
   });
 };
 
-export const eventListenerbuttonGocharacter = (buttonGocharacter) => {
-  buttonGocharacter.addEventListener("click", function () {
-    let navBtncleans = document.querySelectorAll(".title-page");
+export const eventListenerButtonGoCharacter = (buttonGoCharacter) => {
+  buttonGoCharacter.addEventListener("click", () => {
+    if (!(gethero1() && gethero2())) return alert("Renseigner les héros à faire combattre !");;
 
-    if (getheroes1() && getheroes2()) {
-      setstepGame("start");
-      let navBtncleans = document.querySelectorAll(".title-page");
-      navBtncleans.forEach(function (navBtnclean) {
-        navBtnclean.classList.remove("active");
-        if (navBtnclean.textContent == "Versus") {
-          navBtnclean.classList.add("active");
-        }
-        createContentMain("versus");
-      });
-    } else {
-      alert("Renseigner les héros !");
-    }
+    setstepGame("start");
+
+    const navBtns = document.querySelectorAll(".title-page");
+    navBtns.forEach((navBtn) => {
+      navBtn.classList.remove("active");
+      if (navBtn.textContent == "Versus") navBtn.classList.add("active");
+
+      createContentMain("versus");
+    });
   });
 };
 
-export const eventListenerbuttonresetchoiseHeroes = (buttonresetHeroes) => {
-  buttonresetHeroes.addEventListener("click", function () {
-    let navBtncleans = document.querySelectorAll(".title-page");
-    navBtncleans.forEach(function (navBtnclean) {
-      navBtnclean.classList.remove("active");
-      if (navBtnclean.textContent == "Characters") {
-        navBtnclean.classList.add("active");
-      }
+export const eventListenerButtonResetChoiceHeroes = (buttonResetHeroes) => {
+  buttonResetHeroes.addEventListener("click", () => {
+    const navBtns = document.querySelectorAll(".title-page");
+
+    navBtns.forEach((navBtn) => {
+      navBtn.classList.remove("active");
+      if (navBtn.textContent == "Characters") navBtn.classList.add("active");
+      
       resetGame();
       createContentMain("characters");
     });
   });
 };
-export const eventListenerbuttonstartGameHeroes = (buttonstartGameHeroes) => {
-  buttonstartGameHeroes.addEventListener("click", function () {
-   
+
+export const eventListenerButtonStartGameHeroes = (buttonStartGameHeroes) => {
+  buttonStartGameHeroes.addEventListener("click", () => {
     setstepGame("tests");
     runGameVersus()
     createContentMain("versus");
-  
-    
   });
 };
