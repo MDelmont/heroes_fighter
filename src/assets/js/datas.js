@@ -33,7 +33,8 @@ export const takeList = (name) => {
 
   let resultList = Array.from(list);
 
-  if (name !== "name") resultList.unshift(null);
+  if (name === "name") resultList.unshift([ , ]);
+  else resultList.unshift(null);
 
   return resultList;
 };
