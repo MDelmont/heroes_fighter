@@ -1,9 +1,10 @@
 import { createNavBar } from "./nav.js";
-import { creatMain } from "./main.js";
+import { createContentMain, createMain } from "./main.js";
 
 const makePage = () => {
   createNavBar();
-  creatMain();
+  createMain();
+  createContentMain();
 };
 
 makePage();
