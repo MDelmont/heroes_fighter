@@ -1,12 +1,11 @@
 import { makeBandeauContVersus } from "./bandeau.js";
-import imgCourse from "../img/test/course.png";
-import imgBrasDeFer from "../img/test/brasDeFer.png";
-import imgCuisiner from "../img/test/cuisiner.png";
+import imgEscapeGame from "../img/test/escapeGame.png";
+import imgArmWrestling from "../img/test/armWrestling.png";
+import imgFight from "../img/test/fight.png";
 import {
   getStatsgame,
   getheroes1,
   getheroes2,
-  heroes1,
   getlistGame,
   gettestResult,
   whoWin,
@@ -157,9 +156,9 @@ const makeContTestGameVersus = (
   );
 
   let imgGame = document.createElement("img");
-  imgName == "course" ? (imgGame.src = imgCourse) : null;
-  imgName == "brasDeFer" ? (imgGame.src = imgBrasDeFer) : null;
-  imgName == "cuisiner" ? (imgGame.src = imgCuisiner) : null;
+  imgName == "escape_game" ? (imgGame.src = imgEscapeGame) : null;
+  imgName == "arm_wrestling" ? (imgGame.src = imgArmWrestling) : null;
+  imgName == "martial_art" ? (imgGame.src = imgFight) : null;
 
   divTestCorp.appendChild(imgGame);
   divTestCorp.appendChild(

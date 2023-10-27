@@ -6,9 +6,15 @@ let scorePlayer1 = 0;
 let scorePlayer2 = 0;
 let testsResult = {};
 const listGame = {
-  brasDeFer: "Bras de fer",
-  cuisiner: "Préparer à manger",
-  course: "Course de voiture",
+  escape_game: "Escape Game",
+  arm_wrestling: "Bras de fer",
+  martial_art: "Art Martial"
+};
+
+const gameStats = {
+  escape_game: ["intelligence", "speed"],
+  arm_wrestling: ["strength", "durability"],
+  martial_art: ["power", "combat"]
 };
 
 export const getlistGame = () => {
@@ -52,13 +58,10 @@ export const getStatsgame = () => {
     testsResult,
   };
 };
-export const resetScore = () => {};
+
 export const resetGame = () => {
   heroes1 = undefined;
   heroes2 = undefined;
-  scorePlayer1 = 0;
-  scorePlayer2 = 0;
-  testsResult = {};
   stepGame = "init";
 };
 
@@ -67,15 +70,32 @@ export const makeHeroes = (heroes, number) => {
 };
 
 export const runGameVersus = () => {
-  var keys = Object.keys(listGame);
-  keys.forEach((gameKey) => {
-    testsResult[gameKey] = Math.round(Math.random());
+  scorePlayer1 = 0;
+  scorePlayer2 = 0;
+  testsResult = {};
+  
+  Object.keys(listGame).forEach((gameKey) => {
+    let hero1Score = 0;
+    let hero2Score = 0;
+
+    gameStats[gameKey].forEach(stat => {
+      hero1Score += parseInt(heroes1.powerstats[stat], 10) || 0;
+      hero2Score += parseInt(heroes2.powerstats[stat], 10) || 0;
+    })
+
+
+    if (hero1Score === hero2Score) {
+      testsResult[gameKey] = Math.random() < 0.5 ? 0 : 1;
+    } else {
+      testsResult[gameKey] = hero1Score > hero2Score ? 0 : 1;
+    }
+
     if (testsResult[gameKey] == 0) {
       scorePlayer1++;
     } else {
       scorePlayer2++;
     }
-  });
+  })
 };
 
 export const whoWin = () => {
