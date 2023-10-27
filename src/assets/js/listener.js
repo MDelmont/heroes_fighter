@@ -1,6 +1,6 @@
 import { makeContentMain } from "./main.js";
-import { characterImage } from "./datas.js";
-import { heroes1, heroes2 } from "./game.js";
+import { characterImage, takecharacterByID } from "./datas.js";
+import { getheroes1, getheroes2,setheroes1 ,setheroes2} from "./game.js";
 
 export const addEventListenerNav = (navBtn) => {
   navBtn.addEventListener("click", function () {
@@ -19,8 +19,19 @@ export const eventListenerSelectHereos = (selectHero) => {
     const selectedValue = selectHero.value;
     const selectedIndex = selectHero.selectedIndex;
     const selectedOption = selectHero.options[selectedIndex];
+    const parentid = selectHero.parentElement.id;
     const img = selectHero.nextSibling;
     const selectedOptionId = selectedOption.id.split("-")[1];
+
+    if (parentid === "select-heroes-1") {
+      console.log(getheroes1())
+      setheroes1(takecharacterByID(selectedOptionId));
+      console.log(getheroes1())
+    } else if (parentid === "select-heroes-2") {
+      console.log(getheroes2())
+      setheroes2(takecharacterByID(selectedOptionId));
+      console.log(getheroes2())
+    }
     if (selectedValue != "") {
       characterImage(selectedOptionId)
         .then((urlimg) => {

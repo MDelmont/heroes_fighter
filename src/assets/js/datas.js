@@ -19,7 +19,6 @@ export const data = async () => {
 export const takeList = (name) => {
   const list = new Set();
 
-
   for (const key in datas.results) {
     const data = datas.results[key];
 
@@ -56,4 +55,12 @@ export const characterImage = async (id) => {
       console.error("Erreur : ", error);
       return null;
     });
+};
+
+export const takecharacterByID = (id) => {
+  return datas.results.filter((character) => {
+    if (character.id == id) {
+      return character;
+    }
+  })[0];
 };
