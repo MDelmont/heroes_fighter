@@ -72,7 +72,7 @@ const createSelectWithOptions = (name, id) => {
  * Filtre en fonction des valeurs du nom, de l'éditeur et de la race
  */
 const filterTable = () => {
-  const searchValue = inputSearch.value;
+  const searchValue = inputSearch.value?.toLowerCase();
   const publisherValue = publisherSelect.querySelector('select').value;
   const raceValue = raceSelect.querySelector('select').value;
 
