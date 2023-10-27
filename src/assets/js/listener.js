@@ -1,6 +1,14 @@
 import { makeContentMain } from "./main.js";
 import { characterImage, takecharacterByID } from "./datas.js";
-import { getheroes1, getheroes2,setheroes1 ,setheroes2} from "./game.js";
+import {
+  getheroes1,
+  getheroes2,
+  setheroes1,
+  setheroes2,
+  setstepGame,
+  resetGame,
+  runGameVersus,
+} from "./game.js";
 
 export const addEventListenerNav = (navBtn) => {
   navBtn.addEventListener("click", function () {
@@ -24,13 +32,9 @@ export const eventListenerSelectHereos = (selectHero) => {
     const selectedOptionId = selectedOption.id.split("-")[1];
 
     if (parentid === "select-heroes-1") {
-      console.log(getheroes1())
       setheroes1(takecharacterByID(selectedOptionId));
-      console.log(getheroes1())
     } else if (parentid === "select-heroes-2") {
-      console.log(getheroes2())
       setheroes2(takecharacterByID(selectedOptionId));
-      console.log(getheroes2())
     }
     if (selectedValue != "") {
       characterImage(selectedOptionId)
@@ -53,7 +57,6 @@ export const eventListenerSelectHereos = (selectHero) => {
 export const eventListenerbuttonchoiseHeroes = (buttonselectHeroes) => {
   buttonselectHeroes.addEventListener("click", function () {
     let navBtncleans = document.querySelectorAll(".title-page");
-    console.log(navBtncleans);
     navBtncleans.forEach(function (navBtnclean) {
       navBtnclean.classList.remove("active");
       if (navBtnclean.textContent == "Characters") {
@@ -61,5 +64,49 @@ export const eventListenerbuttonchoiseHeroes = (buttonselectHeroes) => {
       }
       makeContentMain("characters");
     });
+  });
+};
+
+export const eventListenerbuttonGocharacter = (buttonGocharacter) => {
+  buttonGocharacter.addEventListener("click", function () {
+    let navBtncleans = document.querySelectorAll(".title-page");
+
+    if (getheroes1() && getheroes2()) {
+      setstepGame("start");
+      let navBtncleans = document.querySelectorAll(".title-page");
+      navBtncleans.forEach(function (navBtnclean) {
+        navBtnclean.classList.remove("active");
+        if (navBtnclean.textContent == "Versus") {
+          navBtnclean.classList.add("active");
+        }
+        makeContentMain("versus");
+      });
+    } else {
+      alert("Renseigner les héros !");
+    }
+  });
+};
+
+export const eventListenerbuttonresetchoiseHeroes = (buttonresetHeroes) => {
+  buttonresetHeroes.addEventListener("click", function () {
+    let navBtncleans = document.querySelectorAll(".title-page");
+    navBtncleans.forEach(function (navBtnclean) {
+      navBtnclean.classList.remove("active");
+      if (navBtnclean.textContent == "Characters") {
+        navBtnclean.classList.add("active");
+      }
+      resetGame();
+      makeContentMain("characters");
+    });
+  });
+};
+export const eventListenerbuttonstartGameHeroes = (buttonstartGameHeroes) => {
+  buttonstartGameHeroes.addEventListener("click", function () {
+   
+    setstepGame("tests");
+    runGameVersus()
+    makeContentMain("versus");
+  
+    
   });
 };

@@ -1,6 +1,9 @@
 import { makeButton } from "./button";
 import { takeList } from "./datas";
-import { eventListenerSelectHereos } from "./listener";
+import {
+  eventListenerSelectHereos,
+  eventListenerbuttonGocharacter,
+} from "./listener";
 import { getStatsgame } from "./game";
 
 export const selectHeroesPart = () => {
@@ -29,7 +32,9 @@ export const selectHeroesPart = () => {
   divpersonnage.appendChild(versus);
   divpersonnage.appendChild(select2);
   divCont.append(divpersonnage);
-  divCont.appendChild(makeButton("Versus", "btn-standard", "Go"));
+  let button = makeButton("Versus", "btn-standard", "Go");
+  eventListenerbuttonGocharacter(button);
+  divCont.appendChild(button);
 
   main.appendChild(divCont);
 };
@@ -56,9 +61,10 @@ const makeSelectCont = (id = null, imgUrl = null) => {
   });
   id ? (select.selectedIndex = id - 1) : null;
   let img = document.createElement("img");
-  img.className = "img-heroes d-none";
-
-  img.src = img.src ?? imgUrl;
+  imgUrl
+    ? (img.className = "img-heroes ")
+    : (img.className = "img-heroes d-none");
+  img.src = imgUrl;
 
   div.appendChild(select);
   div.appendChild(img);

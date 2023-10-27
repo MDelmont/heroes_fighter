@@ -2,8 +2,20 @@ import { makeBandeauContVersus } from "./bandeau.js";
 import imgCourse from "../img/test/course.png";
 import imgBrasDeFer from "../img/test/brasDeFer.png";
 import imgCuisiner from "../img/test/cuisiner.png";
-import { getStatsgame } from "./game.js";
-import { eventListenerbuttonchoiseHeroes } from "./listener";
+import {
+  getStatsgame,
+  getheroes1,
+  getheroes2,
+  heroes1,
+  getlistGame,
+  gettestResult,
+  whoWin,
+} from "./game.js";
+import {
+  eventListenerbuttonchoiseHeroes,
+  eventListenerbuttonresetchoiseHeroes,
+  eventListenerbuttonstartGameHeroes,
+} from "./listener";
 
 export const MakeVersusPage = () => {
   const main = document.querySelector("#content");
@@ -13,66 +25,51 @@ export const MakeVersusPage = () => {
   getStatsgame().stepGame == "init"
     ? main.appendChild(makeBandeauContVersus(buttonSelectHeroes))
     : null;
-
+  let startBtn = makeButtonVersus("Stats Tests", "green", "start-game-btn");
+  eventListenerbuttonstartGameHeroes(startBtn);
   getStatsgame().stepGame == "start"
     ? main.appendChild(makeBandeauContVersus(makeHerosVersus())) &
-      main.appendChild(
-        makeBandeauContVersus(makeButtonVersus("Stats Tests", "green"))
-      )
+      main.appendChild(makeBandeauContVersus(startBtn))
     : null;
 
-  getStatsgame().stepGame == "tests"
-    ? main.appendChild(makeBandeauContVersus(makeHerosVersus())) &
+  if (getStatsgame().stepGame == "tests") {
+    main.appendChild(makeBandeauContVersus(makeHerosVersus()));
+    let listGame = getlistGame();
+    let testResult = gettestResult();
+    // Obtenez les clés de l'objet
+    var keys = Object.keys(listGame);
+    keys.forEach((key) => {
       main.appendChild(
         makeBandeauContVersus(
-          makeContTestGameVersus("Course de voiture", "course", 1)
+          makeContTestGameVersus(listGame[key], key, testResult[key], [
+            [getheroes1().name, getheroes1().image.url],
+            [getheroes2().name, getheroes2().image.url],
+          ])
         )
-      ) &
-      main.appendChild(
-        makeBandeauContVersus(
-          makeContTestGameVersus("Bras de fer", "brasDeFer", 0)
-        )
-      ) &
-      main.appendChild(
-        makeBandeauContVersus(
-          makeContTestGameVersus("Préparer à manger", "cuisiner", 0)
-        )
-      )
-    : null;
+      );
+    });
 
-  getStatsgame().stepGame == "finish"
-    ? main.appendChild(makeBandeauContVersus(makeHerosVersus())) &
-      main.appendChild(
-        makeBandeauContVersus(
-          makeContTestGameVersus("Course de voiture", "course", 1)
-        )
-      ) &
-      main.appendChild(
-        makeBandeauContVersus(
-          makeContTestGameVersus("Bras de fer", "brasDeFer", 0)
-        )
-      ) &
-      main.appendChild(
-        makeBandeauContVersus(
-          makeContTestGameVersus("Préparer à manger", "cuisiner", 0)
-        )
-      ) &
-      main.appendChild(
-        makeBandeauContVersus(
-          makeContResultAllTest(
-            "Superman",
-            "https://www.superherodb.com/pictures2/portraits/10/100/791.jpg",
-            [2, 1]
-          )
-        )
+    main.appendChild(
+      makeBandeauContVersus(
+        makeContResultAllTest(whoWin().name, whoWin().image.url, [
+          getStatsgame().scorePlayer1,
+          getStatsgame().scorePlayer2,
+        ])
       )
-    : null;
+    );
+  }
 };
 
-const makeButtonVersus = (text, color = "red") => {
+const makeButtonVersus = (
+  text,
+  color = "red",
+  idName = "select-character-btn"
+) => {
   let button = document.createElement("button");
   button.textContent = text;
-  button.id = `select-character-btn`;
+
+  button.id = idName;
+
   button.className = color;
   return button;
 };
@@ -81,15 +78,11 @@ const makeHerosVersus = () => {
   divherosCont.className = "part-versus-heroes";
   let divHeros = document.createElement("div");
   divHeros.className = "cont-versus-heroes";
+  let heroes1 = getheroes1();
+  let heroes2 = getheroes2();
 
-  let card1 = makeHerosCard(
-    "Superman",
-    "https://www.superherodb.com/pictures2/portraits/10/100/791.jpg"
-  );
-  let card2 = makeHerosCard(
-    "Batman",
-    "https://www.superherodb.com/pictures2/portraits/10/100/639.jpg"
-  );
+  let card1 = makeHerosCard(heroes1?.name, heroes1?.image?.url);
+  let card2 = makeHerosCard(heroes2?.name, heroes2?.image?.url);
   let versus = document.createElement("div");
 
   versus.className = "versus";
@@ -103,7 +96,13 @@ const makeHerosVersus = () => {
 
   let divherosCdivbutton = document.createElement("div");
   divherosCdivbutton.className = "cont-versus-heroes-button";
-  divherosCdivbutton.append(makeButtonVersus("Reset Heroes", "blue"));
+  let resetbtn = makeButtonVersus(
+    "Reset Heroes",
+    "blue",
+    "reset-character-btn"
+  );
+  eventListenerbuttonresetchoiseHeroes(resetbtn);
+  divherosCdivbutton.append(resetbtn);
 
   divherosCont.append(divHeros);
   divherosCont.append(divherosCdivbutton);
