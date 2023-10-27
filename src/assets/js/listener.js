@@ -51,6 +51,10 @@ export const eventListenerSelectHereos = (selectHero) => {
     } else {
       img.classList.add("d-none");
     }
+
+    if (getheroes1() && getheroes2()) {
+      setstepGame("start");
+    }
   });
 };
 
