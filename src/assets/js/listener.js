@@ -1,4 +1,4 @@
-import { makeContentMain } from "./main.js";
+import { createContentMain } from "./main.js";
 import { characterImage, takecharacterByID } from "./datas.js";
 import {
   getheroes1,
@@ -11,14 +11,13 @@ import {
 } from "./game.js";
 
 export const addEventListenerNav = (navBtn) => {
-  navBtn.addEventListener("click", function () {
-    let navBtncleans = document.querySelectorAll(".title-page");
-    navBtncleans.forEach(function (navBtnclean) {
-      navBtnclean.classList.remove("active");
-    });
+  navBtn.addEventListener("click", () => {
+    let elements = document.querySelectorAll(".title-page");
+
+    elements.forEach((e) => { e.classList.remove("active") });
     navBtn.classList.add("active");
 
-    makeContentMain(navBtn.textContent.toLowerCase());
+    createContentMain(navBtn.textContent.toLowerCase());
   });
 };
 
@@ -66,7 +65,7 @@ export const eventListenerbuttonchoiseHeroes = (buttonselectHeroes) => {
       if (navBtnclean.textContent == "Characters") {
         navBtnclean.classList.add("active");
       }
-      makeContentMain("characters");
+      createContentMain("characters");
     });
   });
 };
@@ -83,7 +82,7 @@ export const eventListenerbuttonGocharacter = (buttonGocharacter) => {
         if (navBtnclean.textContent == "Versus") {
           navBtnclean.classList.add("active");
         }
-        makeContentMain("versus");
+        createContentMain("versus");
       });
     } else {
       alert("Renseigner les héros !");
@@ -100,7 +99,7 @@ export const eventListenerbuttonresetchoiseHeroes = (buttonresetHeroes) => {
         navBtnclean.classList.add("active");
       }
       resetGame();
-      makeContentMain("characters");
+      createContentMain("characters");
     });
   });
 };
@@ -109,7 +108,7 @@ export const eventListenerbuttonstartGameHeroes = (buttonstartGameHeroes) => {
    
     setstepGame("tests");
     runGameVersus()
-    makeContentMain("versus");
+    createContentMain("versus");
   
     
   });
