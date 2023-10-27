@@ -22,7 +22,7 @@ export const createTable = () => {
   //Headers
   const headerRow = document.createElement("tr");
   headers.forEach((header, index) => {
-    const tabHeader = createElementWithProps("th", { innerText: header })
+    const tabHeader = createElementWithProps("th", { innerText: header });
     tabHeader.addEventListener("click", () =>
       sortTableByColumn(index, tabBody)
     );
@@ -54,8 +54,12 @@ export const sortTableByColumn = (columnIndex, tabBody) => {
   }
 
   allCharacters.sort((a, b) => {
-    const valueA = caracteristics.split(".").reduce((powerstats, stats) => powerstats[stats], a);
-    const valueB = caracteristics.split(".").reduce((powerstats, stats) => powerstats[stats], b);
+    const valueA = caracteristics
+      .split(".")
+      .reduce((powerstats, stats) => powerstats[stats], a);
+    const valueB = caracteristics
+      .split(".")
+      .reduce((powerstats, stats) => powerstats[stats], b);
 
     // Si les valeurs sont des nombres
     if (!isNaN(valueA) && !isNaN(valueB)) {
@@ -82,8 +86,12 @@ export const sortTableByColumn = (columnIndex, tabBody) => {
 export const addDataRow = (character, tabBody) => {
   const dataRow = document.createElement("tr");
   const nameData = document.createElement("td");
+  console.log(character);
 
-  const nameLink = createElementWithProps("a", { href: "#", innerText: character.name })
+  const nameLink = createElementWithProps("a", {
+    href: "#",
+    innerText: character.name,
+  });
   nameLink.addEventListener("click", (e) => {
     e.preventDefault();
 

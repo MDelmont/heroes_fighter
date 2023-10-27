@@ -2,38 +2,71 @@ import { makeBandeauContVersus } from "./bandeau.js";
 import imgCourse from "../img/test/course.png";
 import imgBrasDeFer from "../img/test/brasDeFer.png";
 import imgCuisiner from "../img/test/cuisiner.png";
+import { getStatsgame } from "./game.js";
+import { eventListenerbuttonchoiseHeroes } from "./listener";
+
 export const MakeVersusPage = () => {
   const main = document.querySelector("#content");
 
-  main.appendChild(makeBandeauContVersus(makeButtonVersus("Select Heroes")));
-  main.appendChild(makeBandeauContVersus(makeHerosVersus()));
-  main.appendChild(
-    makeBandeauContVersus(makeButtonVersus("Stats Tests", "green"))
-  );
+  let buttonSelectHeroes = makeButtonVersus("Select Heroes");
+  eventListenerbuttonchoiseHeroes(buttonSelectHeroes);
+  getStatsgame().stepGame == "init"
+    ? main.appendChild(makeBandeauContVersus(buttonSelectHeroes))
+    : null;
 
-  main.appendChild(
-    makeBandeauContVersus(
-      makeContTestGameVersus("Course de voiture", "course", 1)
-    )
-  );
-  main.appendChild(
-    makeBandeauContVersus(makeContTestGameVersus("Bras de fer", "brasDeFer", 0))
-  );
-  main.appendChild(
-    makeBandeauContVersus(
-      makeContTestGameVersus("Préparer à manger", "cuisiner", 0)
-    )
-  );
-
-  main.appendChild(
-    makeBandeauContVersus(
-      makeContResultAllTest(
-        "Superman",
-        "https://www.superherodb.com/pictures2/portraits/10/100/791.jpg",
-        [2, 1]
+  getStatsgame().stepGame == "start"
+    ? main.appendChild(makeBandeauContVersus(makeHerosVersus())) &
+      main.appendChild(
+        makeBandeauContVersus(makeButtonVersus("Stats Tests", "green"))
       )
-    )
-  );
+    : null;
+
+  getStatsgame().stepGame == "tests"
+    ? main.appendChild(makeBandeauContVersus(makeHerosVersus())) &
+      main.appendChild(
+        makeBandeauContVersus(
+          makeContTestGameVersus("Course de voiture", "course", 1)
+        )
+      ) &
+      main.appendChild(
+        makeBandeauContVersus(
+          makeContTestGameVersus("Bras de fer", "brasDeFer", 0)
+        )
+      ) &
+      main.appendChild(
+        makeBandeauContVersus(
+          makeContTestGameVersus("Préparer à manger", "cuisiner", 0)
+        )
+      )
+    : null;
+
+  getStatsgame().stepGame == "finish"
+    ? main.appendChild(makeBandeauContVersus(makeHerosVersus())) &
+      main.appendChild(
+        makeBandeauContVersus(
+          makeContTestGameVersus("Course de voiture", "course", 1)
+        )
+      ) &
+      main.appendChild(
+        makeBandeauContVersus(
+          makeContTestGameVersus("Bras de fer", "brasDeFer", 0)
+        )
+      ) &
+      main.appendChild(
+        makeBandeauContVersus(
+          makeContTestGameVersus("Préparer à manger", "cuisiner", 0)
+        )
+      ) &
+      main.appendChild(
+        makeBandeauContVersus(
+          makeContResultAllTest(
+            "Superman",
+            "https://www.superherodb.com/pictures2/portraits/10/100/791.jpg",
+            [2, 1]
+          )
+        )
+      )
+    : null;
 };
 
 const makeButtonVersus = (text, color = "red") => {
@@ -44,6 +77,8 @@ const makeButtonVersus = (text, color = "red") => {
   return button;
 };
 const makeHerosVersus = () => {
+  let divherosCont = document.createElement("div");
+  divherosCont.className = "part-versus-heroes";
   let divHeros = document.createElement("div");
   divHeros.className = "cont-versus-heroes";
 
@@ -65,7 +100,14 @@ const makeHerosVersus = () => {
   divHeros.appendChild(card1);
   divHeros.appendChild(versus);
   divHeros.appendChild(card2);
-  return divHeros;
+
+  let divherosCdivbutton = document.createElement("div");
+  divherosCdivbutton.className = "cont-versus-heroes-button";
+  divherosCdivbutton.append(makeButtonVersus("Reset Heroes", "blue"));
+
+  divherosCont.append(divHeros);
+  divherosCont.append(divherosCdivbutton);
+  return divherosCont;
 };
 
 const makeHerosCard = (name, imgurl, game = false, winner = true) => {

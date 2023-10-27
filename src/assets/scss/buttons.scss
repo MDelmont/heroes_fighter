@@ -4,7 +4,7 @@ $bgColor: rgb(255, 247, 0);
 $bgColorhover: rgb(255, 225, 0);
 $bgColoractive: rgb(255, 183, 0);
 $colorprimary: rgb(14, 5, 50);
-
+$blueColor: rgb(53, 8, 233);
 .btn-standard {
   height: 50px;
   width: 70px;
@@ -33,6 +33,10 @@ button {
   &.green {
     color: $textColor2;
     border: 2px solid $textColor2;
+  }
+  &.blue {
+    color: $blueColor;
+    border: 2px solid $blueColor;
   }
 
   &:active {
