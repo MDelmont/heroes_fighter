@@ -1,7 +1,7 @@
 import { createElementWithProps } from "../utils";
 import { gethero1, gethero2 } from "../game.js";
 import { makeHerosCard } from "./heroesCard.js";
-import { eventListenerButtonResetChoiceHeroes } from "../listener.js";
+import { eventListenerButtonResetChoiceHeroes } from "../listeners/eventListenerResetChoiceHeroes";
 /**
  * Creat headband versus heroes
  * @returns {HTMLElement}

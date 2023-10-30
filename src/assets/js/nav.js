@@ -1,4 +1,4 @@
-import { addEventListenerNav } from "./listener";
+import { addEventListenerNav } from "./listeners/eventListenerNav"
 import { createElementWithProps } from "./utils";
 
 export const createNavBar = () => {
@@ -10,7 +10,10 @@ export const createNavBar = () => {
 
     if (title === "Heroes Fighter") navItem.classList.add("active");
 
-    const navLink = createElementWithProps("a", { className: "nav-btn", textContent: title });
+    const navLink = createElementWithProps("a", {
+      className: "nav-btn",
+      textContent: title,
+    });
     navItem.appendChild(navLink);
     addEventListenerNav(navItem);
     nav.appendChild(navItem);

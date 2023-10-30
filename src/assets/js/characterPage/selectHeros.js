@@ -1,9 +1,7 @@
 import { makeButton } from "../button";
 import { takeList } from "../datas";
-import {
-  eventListenerSelectHeroes,
-  eventListenerButtonGoCharacter,
-} from "../listener";
+import { eventListenerSelectHeroes } from "../listeners/eventListenerSelectHeroes";
+import { eventListenerButtonGoCharacter } from "../listeners/eventListenerGoCharacter";
 import { getStatsgame } from "../game";
 import { createElementWithProps } from "../utils";
 
