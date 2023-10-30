@@ -3,7 +3,7 @@ import { gethero1, gethero2 } from "../game.js";
 import { makeHerosCard } from "./heroesCard.js";
 import { eventListenerButtonResetChoiceHeroes } from "../listener.js";
 /**
- *
+ * Creat headband versus heroes
  * @returns {HTMLElement}
  */
 export const makeHerosVersus = () => {

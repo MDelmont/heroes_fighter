@@ -12,7 +12,7 @@ export const makeHerosCard = (name, imgurl, game = false, winner = true) => {
     className: "heroes-card",
   });
   const p = createElementWithProps("p", { textContent: name });
-  const img = createElementWithProps("img", { src: imgurl });
+  const img = createElementWithProps("img", { src : imgurl });
 
   heroesCard.appendChild(p);
   heroesCard.appendChild(img);

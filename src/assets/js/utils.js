@@ -19,7 +19,7 @@ export const createElementWithProps = (element, options = {}) => {
   const el = document.createElement(element);
 
   if (options.id) el.id = options.id;
-  if (options.className) el.classList.add(options.className);
+  if (options.className) el.className = options.className;
   if (options.name) el.name = options.name;
   if (options.type) el.type = options.type;
   if (options.placeholder) el.placeholder = options.placeholder;
@@ -29,6 +29,7 @@ export const createElementWithProps = (element, options = {}) => {
   if (options.value) el.value = options.value;
   if (options.href) el.href = options.href;
   if (options.for) el.for = options.for;
+  if (options.src) el.src = options.src;
 
   return el;
 };
