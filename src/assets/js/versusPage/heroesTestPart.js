@@ -32,10 +32,10 @@ export const makeContTestGameVersus = (
   });
 
   divTestCorp.appendChild(
-    makeHerosCard(hero1?.name, hero1?.image?.src, true, winner == 0)
+    makeHerosCard(hero1?.name, hero1?.image?.url, true, winner == 0)
   );
 
-  imgSrc =
+  const imgSrc =
     imgName == "escape_game"
       ? imgEscapeGame
       : imgName == "arm_wrestling"
@@ -50,7 +50,7 @@ export const makeContTestGameVersus = (
 
   divTestCorp.appendChild(imgGame);
   divTestCorp.appendChild(
-    makeHerosCard(hero2?.name, hero2?.image?.src, true, winner == 1)
+    makeHerosCard(hero2?.name, hero2?.image?.url, true, winner == 1)
   );
 
   divTest.appendChild(titre);

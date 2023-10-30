@@ -52,7 +52,7 @@ const updateImageSource = (selectedValue, selectedOptionId, img) => {
       img.src = imgSrc;    
     })
     .catch((err) => {
-      console.log("Pas d'image disponible", err);
+      console.error("Pas d'image disponible", err);
       if (!img.classList.contains("d-none")) img.classList.add("d-none");
     });
 };

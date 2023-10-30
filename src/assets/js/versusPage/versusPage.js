@@ -15,9 +15,10 @@ import {
 import { eventListenerButtonStartGameHeroes } from "../listener.js";
 
 /**
- * Create versus page
+ * Create and append main content versus
  */
 export const MakeVersusPage = () => {
+  console.log("111");
   const main = document.querySelector("#content");
 
   const stepGame = getStatsgame().stepGame;
@@ -25,6 +26,7 @@ export const MakeVersusPage = () => {
   if (stepGame == "init") {
     makeSelectHeroesPart();
   } else if (stepGame == "start") {
+    console.log("22");
     main.appendChild(makeBandeauCont([makeHerosVersus()]));
 
     const startBtn = createElementWithProps("button", {
@@ -36,26 +38,30 @@ export const MakeVersusPage = () => {
     eventListenerButtonStartGameHeroes(startBtn);
     main.appendChild(makeBandeauCont([startBtn]));
   } else if (stepGame == "tests") {
+    console.log("333");
     main.appendChild(makeBandeauCont([makeHerosVersus()]));
 
     const listGame = getlistGame();
     const testResult = gettestResult();
 
     var games = Object.keys(listGame);
-
+    console.log("444");
     games.forEach((game) => {
+      console.log("55");
       main.appendChild(
-        makeBandeauCont(
+        makeBandeauCont([
           makeContTestGameVersus(
             listGame[game],
             game,
             testResult[game],
             gethero1(),
             gethero2()
-          )
-        )
+          ),
+        ])
       );
     });
+
+    console.log("66");
 
     main.appendChild(
       makeBandeauCont([

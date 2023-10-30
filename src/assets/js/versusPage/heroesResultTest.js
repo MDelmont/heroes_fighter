@@ -14,7 +14,7 @@ export const makeContResultAllTest = (winnerName, urlImg, score) => {
   const titre = createElementWithProps("h2", {
     textContent: `Winner is ${winnerName}`,
   });
-
+  console.log(winnerName, urlImg, score);
   const img = createElementWithProps("img", {
     src: urlImg,
   });

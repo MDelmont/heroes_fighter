@@ -1,10 +1,9 @@
 /**
  * Crée un élément div avec un bandeau rouge.
- * @param {Array} components - Une liste de composants.
+ * @param {Liste} components - Une liste de composants.
  * @returns {HTMLDivElement}
  */
 export const makeBandeauCont = (components) => {
-  console.log(components);
   // Crée le div parent
   const contBandeau = document.createElement("div");
   contBandeau.className = "cont-bandeau versus-bandeau";

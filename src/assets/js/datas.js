@@ -12,7 +12,7 @@ export const data = async () => {
       datas = data;
     })
     .catch((error) => {
-      console.log("Erreur lors de l'importation des données", error);
+      console.error("Erreur lors de l'importation des données", error);
     });
 };
 
