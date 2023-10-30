@@ -1,4 +1,4 @@
-import { createElementWithProps, handleNullValue } from "../utils";
+import { createElementWithProps, handleNullValue } from "../../utils";
 
 /**
  * Crée une modale pour un personnage donné.

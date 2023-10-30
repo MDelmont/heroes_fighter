@@ -1,9 +1,9 @@
-import { createHeroesTab } from "./heroesTab/main";
-import { selectHeroesPart } from "./selectHeros";
-import { createFormTab } from "./formTab";
+import { createHeroesTab } from "./characterPage/heroesTab/main";
+import { selectHeroesPart } from "./characterPage/selectHeros";
+import { createFormTab } from "./characterPage/formTab";
 import { data } from "./datas";
-import { MakeheroesFighterPage } from "./herosFighterPage";
-import { MakeVersusPage } from "./versusPage";
+import { MakeHeroesFighterPage } from "./heroesFigherPage/herosFighterPage";
+import { MakeVersusPage } from "./versusPage/versusPage";
 import { createElementWithProps } from "./utils";
 
 let isMakePage = false;
@@ -28,9 +28,10 @@ export const createContentMain = (page = "heroes fighter") => {
         createFormTab();
         createHeroesTab();
       })
-      .catch((err) => { console.error("error", err) });
-  }
-  else if (page == "heroes fighter") MakeheroesFighterPage();
+      .catch((err) => {
+        console.error("error", err);
+      });
+  } else if (page == "heroes fighter") MakeHeroesFighterPage();
   else if (page == "versus") MakeVersusPage();
 
   isMakePage = false;

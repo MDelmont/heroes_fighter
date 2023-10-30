@@ -1,4 +1,4 @@
-import { createElementWithProps, handleNullValue } from "../utils";
+import { createElementWithProps, handleNullValue } from "../../utils";
 import { headers, columnKeyMapping } from "./constants";
 import { createModal } from "./modal";
 import { allCharacters, currentPage, showPage } from "./navigation";
