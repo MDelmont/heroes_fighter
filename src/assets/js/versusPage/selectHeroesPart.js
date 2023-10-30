@@ -1,6 +1,6 @@
 import { createElementWithProps } from "../utils";
 import { makeBandeauCont } from "../bandeau.js";
-import { eventListenerButtonChooseHeroes } from "../listener.js";
+import { eventListenerButtonChoiceHeroes } from "../listeners/eventListenerChoiceHeroes";
 /**
  * Create and append Select heroes part
  */
@@ -13,7 +13,7 @@ export const makeSelectHeroesPart = () => {
     id: "select-character-btn",
   });
   // Add event listener on btn
-  eventListenerButtonChooseHeroes(btn);
+  eventListenerButtonChoiceHeroes(btn);
   const btnCont = makeBandeauCont([btn]);
 
   main.appendChild(btnCont);

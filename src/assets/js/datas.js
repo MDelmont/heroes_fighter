@@ -65,3 +65,24 @@ export const takecharacterByID = (id) => {
     }
   })[0];
 };
+
+/**
+ *  Update img for select part
+ * @param {String} selectedValue 
+ * @param {Integer} selectedOptionId 
+ * @param {String} img 
+ * @returns 
+ */
+export const updateImageSource = (selectedValue, selectedOptionId, img) => {
+  if (selectedValue === "") return img.classList.add("d-none");
+
+  characterImage(selectedOptionId)
+    .then((imgSrc) => {
+      img.classList.remove("d-none");
+      img.src = imgSrc;
+    })
+    .catch((err) => {
+      console.error("Pas d'image disponible", err);
+      if (!img.classList.contains("d-none")) img.classList.add("d-none");
+    });
+};
