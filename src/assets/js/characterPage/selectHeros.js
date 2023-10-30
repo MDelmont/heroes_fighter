@@ -1,15 +1,17 @@
-import { makeButton } from "./button";
-import { takeList } from "./datas";
+import { makeButton } from "../button";
+import { takeList } from "../datas";
 import {
   eventListenerSelectHeroes,
   eventListenerButtonGoCharacter,
-} from "./listener";
-import { getStatsgame } from "./game";
-import { createElementWithProps } from "./utils";
+} from "../listener";
+import { getStatsgame } from "../game";
+import { createElementWithProps } from "../utils";
 
 export const selectHeroesPart = () => {
   const main = document.querySelector("#content");
-  const div = createElementWithProps("div", { className: "select-heroes-part" });
+  const div = createElementWithProps("div", {
+    className: "select-heroes-part",
+  });
 
   const statsGame = getStatsgame();
 
@@ -45,8 +47,12 @@ export const selectHeroesPart = () => {
 };
 
 const makeSelectCont = (id = null, imgUrl = null) => {
-  const div = createElementWithProps("div", { className: "select-heroes-cont"});
-  const select = createElementWithProps("select", { className: "select-heroes" })
+  const div = createElementWithProps("div", {
+    className: "select-heroes-cont",
+  });
+  const select = createElementWithProps("select", {
+    className: "select-heroes",
+  });
 
   eventListenerSelectHeroes(select);
 

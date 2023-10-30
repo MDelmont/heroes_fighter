@@ -1,7 +1,7 @@
-import { datas } from "../datas";
+import { datas } from "../../datas";
 import { createTable, tabBody } from "./tableFunctions";
 import { handleNavigation, showPage, updatePageDisplay, setPageCharacters } from "./navigation";
-import { createElementWithProps } from "../utils";
+import { createElementWithProps } from "../../utils";
 
 export let pageDisplay;
 

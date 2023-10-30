@@ -1,4 +1,4 @@
-import {} from "./versusPage";
+import {} from "./versusPage/versusPage";
 export let hero1;
 export let hero2;
 let stepGame = "init"; //init,start,tests,finish
@@ -8,13 +8,13 @@ let testsResult = {};
 const listGame = {
   escape_game: "Escape Game",
   arm_wrestling: "Bras de fer",
-  martial_art: "Art Martial"
+  martial_art: "Art Martial",
 };
 
 const gameStats = {
   escape_game: ["intelligence", "speed"],
   arm_wrestling: ["strength", "durability"],
-  martial_art: ["power", "combat"]
+  martial_art: ["power", "combat"],
 };
 
 export const getlistGame = () => {
@@ -73,16 +73,15 @@ export const runGameVersus = () => {
   scorePlayer1 = 0;
   scorePlayer2 = 0;
   testsResult = {};
-  
+
   Object.keys(listGame).forEach((gameKey) => {
     let hero1Score = 0;
     let hero2Score = 0;
 
-    gameStats[gameKey].forEach(stat => {
+    gameStats[gameKey].forEach((stat) => {
       hero1Score += parseInt(hero1.powerstats[stat], 10) || 0;
       hero2Score += parseInt(hero2.powerstats[stat], 10) || 0;
-    })
-
+    });
 
     if (hero1Score === hero2Score) {
       testsResult[gameKey] = Math.random() < 0.5 ? 0 : 1;
@@ -95,7 +94,7 @@ export const runGameVersus = () => {
     } else {
       scorePlayer2++;
     }
-  })
+  });
 };
 
 export const whoWin = () => {
