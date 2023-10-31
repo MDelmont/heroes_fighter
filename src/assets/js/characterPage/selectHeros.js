@@ -1,9 +1,12 @@
 import { takeList } from "../datas";
-import { eventListenerSelectHeroes } from "../listeners/eventListenerSelectHeroes";
+import {eventListenerSelectHeroes} from "../listeners/eventListenerSelectHeroes";
 import { eventListenerButtonGoCharacter } from "../listeners/eventListenerGoCharacter";
 import { getStatsgame } from "../game";
 import { createElementWithProps } from "../utils";
 
+/**
+ * Create Select part heroes
+ */
 /**
  * Create Select part heroes
  */
@@ -35,7 +38,13 @@ export const selectHeroesPart = () => {
   versus.appendChild(text);
 
   const select2 = makeSelectCont(id2, imgUrl2);
+
+  const select2 = makeSelectCont(id2, imgUrl2);
   select2.id = "select-heroes-2";
+
+  const divpersonnage = createElementWithProps("div", {
+    className: "Select-heroes-personnage-part",
+  });
 
   const divpersonnage = createElementWithProps("div", {
     className: "Select-heroes-personnage-part",
@@ -52,12 +61,25 @@ export const selectHeroesPart = () => {
     id: "Versus",
   });
 
+
+  const button = createElementWithProps("button", {
+    innerText: "Go",
+    className: "btn-standard",
+    id: "Versus",
+  });
+
   eventListenerButtonGoCharacter(button);
   div.appendChild(button);
 
   main.appendChild(div);
 };
 
+/**
+ *
+ * @param {Integer} id
+ * @param {String} imgUrl
+ * @returns {HTMLDivElement}
+ */
 /**
  *
  * @param {Integer} id
@@ -78,9 +100,11 @@ const makeSelectCont = (id = null, imgUrl = null) => {
   listOption.forEach((perso) => {
     let name = perso[1];
     const id = perso[0];
+    const id = perso[0];
     if (perso == "") {
       name = "";
     }
+    const option = document.createElement("option");
     const option = document.createElement("option");
     option.value = name;
     option.text = name;
