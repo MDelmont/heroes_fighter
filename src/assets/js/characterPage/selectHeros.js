@@ -1,5 +1,5 @@
 import { takeList } from "../datas";
-import {eventListenerSelectHeroes} from "../listeners/eventListenerSelectHeroes";
+import { eventListenerSelectHeroes } from "../listeners/eventListenerSelectHeroes";
 import { eventListenerButtonGoCharacter } from "../listeners/eventListenerGoCharacter";
 import { getStatsgame } from "../game";
 import { createElementWithProps } from "../utils";
@@ -39,16 +39,14 @@ export const selectHeroesPart = () => {
 
   const select2 = makeSelectCont(id2, imgUrl2);
 
-  const select2 = makeSelectCont(id2, imgUrl2);
+
   select2.id = "select-heroes-2";
 
   const divpersonnage = createElementWithProps("div", {
     className: "Select-heroes-personnage-part",
   });
 
-  const divpersonnage = createElementWithProps("div", {
-    className: "Select-heroes-personnage-part",
-  });
+
 
   divpersonnage.appendChild(select1);
   divpersonnage.appendChild(versus);
@@ -61,12 +59,6 @@ export const selectHeroesPart = () => {
     id: "Versus",
   });
 
-
-  const button = createElementWithProps("button", {
-    innerText: "Go",
-    className: "btn-standard",
-    id: "Versus",
-  });
 
   eventListenerButtonGoCharacter(button);
   div.appendChild(button);
@@ -100,15 +92,16 @@ const makeSelectCont = (id = null, imgUrl = null) => {
   listOption.forEach((perso) => {
     let name = perso[1];
     const id = perso[0];
-    const id = perso[0];
     if (perso == "") {
       name = "";
     }
-    const option = document.createElement("option");
-    const option = document.createElement("option");
-    option.value = name;
-    option.text = name;
-    option.id = `option-${id}`;
+
+    const option = createElementWithProps("option", {
+      value: name,
+      text: name,
+      id: `option-${id}`,
+    });
+
     select.appendChild(option);
   });
 

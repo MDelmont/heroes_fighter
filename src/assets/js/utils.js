@@ -30,6 +30,7 @@ export const createElementWithProps = (element, options = {}) => {
   if (options.href) el.href = options.href;
   if (options.for) el.for = options.for;
   if (options.src) el.src = options.src;
+  if (options.text ) el.text  = options.text ;
 
   return el;
 };
