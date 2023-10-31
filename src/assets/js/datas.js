@@ -6,19 +6,60 @@ export let datas;
  * @returns
  */
 export const data = async () => {
-  return fetch(`https://superheroapi.com/api.php/${env.token}/search/a`, {
-    method: "GET",
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      datas = data;
-    })
-    .catch((error) => {
-      console.error("Erreur lors de l'importation des données", error);
-    });
+  let dataTemps = [];
+  const searchLetter = ["a", "e", "i", "o", "u", "q", "y", "t", "x"];
+
+  const fetchPromises = searchLetter.map((letter) => {
+    return fetch(
+      `https://superheroapi.com/api.php/${env.token}/search/${letter}`,
+      {
+        method: "GET",
+      }
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        dataTemps.push(data.results);
+      })
+      .catch((error) => {
+        console.error("Erreur lors de l'importation des données", error);
+      });
+  });
+
+  // Attendre que toutes les promesses se terminent
+  await Promise.all(fetchPromises);
+
+  const uniqueData = dataTemps.flat().filter((value, index, self) => {
+    return self.findIndex((obj) => obj.id === value.id) === index;
+  });
+
+  const ids = uniqueData.map((o) => {
+    return o.id;
+  });
+
+  datas = { results: uniqueData };
 };
+
+/**
+ *
+ * @param {object} uniqueData
+ * @returns {object} liste d'ID qui manque
+ */
+function findMissingIds(uniqueData) {
+  // Créez un tableau contenant tous les nombres de 1 à 731
+  const allIds = Array.from({ length: 731 }, (_, index) =>
+    (index + 1).toString()
+  );
+
+  // Extrait les `ids` de uniqueData
+  const ids = uniqueData.map((o) => o.id.toString());
+
+  // Compare les deux tableaux pour trouver les numéros manquants
+  const missingIds = allIds.filter((id) => !ids.includes(id));
+  console.log(missingIds);
+  return missingIds;
+}
 
 /**
  *
