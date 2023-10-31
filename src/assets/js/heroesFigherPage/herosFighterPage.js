@@ -24,15 +24,14 @@ export const MakeHeroesFighterPage = () => {
       [
         "Nous avons travaillé à deux sur le projet.",
         "Ce projet a pour but de nous faire monter en compétence sur le JavaScript avancé.",
-        "Pour les données nous utilisons un api. Pour la gestion du versionning nous utilisons gitHub."
-      
+        "Pour les données nous utilisons un api. Pour la gestion du versionning nous utilisons gitHub.",
       ],
     ],
     [
       "Contact",
       [
-        " <a href='https://www.linkedin.com/in/benjamin-guillemin-57704624b/'>Benjamin Guillemin</a> et <a href='https://www.linkedin.com/in/matthieu-delmont/'>Matthieu Delmont</a>",
-        " <a href='https://github.com/MDelmont/heroes_fighter'>GitHub</a> : <a href='https://github.com/MDelmont/heroes_fighter'>https://github.com/MDelmont/heroes_fighter</a>",
+        " <a target='_blank' href='https://www.linkedin.com/in/benjamin-guillemin-57704624b/'>Benjamin Guillemin</a> et <a target='_blank' href='https://www.linkedin.com/in/matthieu-delmont/'>Matthieu Delmont</a>",
+        " <a href='https://github.com/MDelmont/heroes_fighter' target='_blank'>GitHub</a> : <a href='https://github.com/MDelmont/heroes_fighter' target='_blank'>https://github.com/MDelmont/heroes_fighter</a>",
       ],
     ],
   ];
