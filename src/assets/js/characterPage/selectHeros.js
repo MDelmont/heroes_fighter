@@ -1,10 +1,12 @@
-import { makeButton } from "../button";
 import { takeList } from "../datas";
-import { eventListenerSelectHeroes } from "../listeners/eventListenerSelectHeroes";
+import {eventListenerSelectHeroes} from "../listeners/eventListenerSelectHeroes";
 import { eventListenerButtonGoCharacter } from "../listeners/eventListenerGoCharacter";
 import { getStatsgame } from "../game";
 import { createElementWithProps } from "../utils";
 
+/**
+ * Create Select part heroes
+ */
 export const selectHeroesPart = () => {
   const main = document.querySelector("#content");
   const div = createElementWithProps("div", {
@@ -28,22 +30,37 @@ export const selectHeroesPart = () => {
   let text = document.createElement("p");
   text.textContent = "VS";
   versus.appendChild(text);
-  let select2 = makeSelectCont(id2, imgUrl2);
+
+  const select2 = makeSelectCont(id2, imgUrl2);
   select2.id = "select-heroes-2";
 
-  let divpersonnage = document.createElement("div");
-  divpersonnage.className = "Select-heroes-personnage-part";
+  const divpersonnage = createElementWithProps("div", {
+    className: "Select-heroes-personnage-part",
+  });
+
   divpersonnage.appendChild(select1);
   divpersonnage.appendChild(versus);
   divpersonnage.appendChild(select2);
   div.append(divpersonnage);
-  let button = makeButton("Versus", "btn-standard", "Go");
+
+  const button = createElementWithProps("button", {
+    innerText: "Go",
+    className: "btn-standard",
+    id: "Versus",
+  });
+
   eventListenerButtonGoCharacter(button);
   div.appendChild(button);
 
   main.appendChild(div);
 };
 
+/**
+ *
+ * @param {Integer} id
+ * @param {String} imgUrl
+ * @returns {HTMLDivElement}
+ */
 const makeSelectCont = (id = null, imgUrl = null) => {
   const div = createElementWithProps("div", {
     className: "select-heroes-cont",
@@ -57,27 +74,23 @@ const makeSelectCont = (id = null, imgUrl = null) => {
   const listOption = takeList("name");
   listOption.forEach((perso) => {
     let name = perso[1];
-    let id = perso[0];
+    const id = perso[0];
     if (perso == "") {
       name = "";
     }
-    let option = document.createElement("option");
+    const option = document.createElement("option");
     option.value = name;
     option.text = name;
     option.id = `option-${id}`;
     select.appendChild(option);
   });
 
-  id ? (select.selectedIndex = id - 1) : null;
-  id ?? (select.selectedIndex = id - 1);
-
   if (id) select.selectedIndex = id - 1;
 
-  let img = document.createElement("img");
-  imgUrl
-    ? (img.className = "img-heroes ")
-    : (img.className = "img-heroes d-none");
-  img.src = imgUrl;
+  const img = createElementWithProps("img", {
+    className: imgUrl ? "img-heroes " : "img-heroes d-none",
+    src: imgUrl,
+  });
 
   div.appendChild(select);
   div.appendChild(img);

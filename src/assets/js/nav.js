@@ -1,6 +1,9 @@
-import { addEventListenerNav } from "./listeners/eventListenerNav"
+import { addEventListenerNav } from "./listeners/eventListenerNav";
 import { createElementWithProps } from "./utils";
 
+/**
+ * Creation of navigation bar
+ */
 export const createNavBar = () => {
   const nav = createElementWithProps("nav", { className: "navigation" });
   const pageTitles = ["Heroes Fighter", "Versus", "Characters"];
