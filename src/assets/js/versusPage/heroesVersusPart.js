@@ -24,7 +24,7 @@ export const makeHerosVersus = () => {
   const versus = createElementWithProps("div", {
     className: "versus",
   });
-  const text = createElementWithProps("div", {
+  const text = createElementWithProps("p", {
     textContent: "VS",
   });
 
@@ -40,7 +40,7 @@ export const makeHerosVersus = () => {
 
   const resetbtn = createElementWithProps("button", {
     innerText: "Reset Heroes",
-    className: "red",
+    className: "blue",
     id: "reset-character-btn",
   });
 

@@ -11,9 +11,8 @@ export const eventListenerButtonResetChoiceHeroes = (buttonResetHeroes) => {
     navBtns.forEach((navBtn) => {
       navBtn.classList.remove("active");
       if (navBtn.textContent == "Characters") navBtn.classList.add("active");
-
-      resetGame();
-      createContentMain("characters");
     });
+    resetGame();
+    createContentMain("characters");
   });
 };
