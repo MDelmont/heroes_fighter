@@ -9,21 +9,30 @@ export const MakeHeroesFighterPage = () => {
     [
       "Principe du projet",
       [
-        "Le projet met en avant des heroes de tout milieu ! Le but est de se faire affronté deux heroes sur plusieurs épreuve et de voir le quel gagne ! Amuser vous bien !",
+        "Le projet met en avant des héros de tous milieux ! Le but est de les faire s'affronter dans plusieurs épreuves et de voir lequel gagne ! Amusez-vous bien !",
       ],
     ],
     [
       "Utilisation du site",
       [
-        "Pour se faire affronter les deux héros aller sur la page versus. Et suivez les indications.",
-        "Il est également possible de voir tout les personnages dans la page characters. Vous pourrez trier et filter suivant vos envies. Vous pourrez également sélèctionnez deux heros à faire combattre et cliquer sur GO.",
+        "Pour faire affronter les deux héros, allez sur la page 'Versus' et suivez les indications.",
+        "Il est également possible de voir tous les personnages sur la page 'Characters'. Vous pourrez les trier et les filtrer selon vos préférences. Vous pourrez également sélectionner deux héros à faire combattre et cliquer sur 'GO'.",
       ],
     ],
     [
       "Réalisation",
       [
-        "Ce projet à pour but de nous faire monté en compétence sur le javascript avancé. Il nous ai imposer d'utiliser une api, et d'oprimiser le fonctionnement",
-        "Nous avont travaillier à deux sur le projet, en mettant en place un gitHub pour géré le versionning",
+        "Nous avons travaillé à deux sur le projet.",
+        "Ce projet a pour but de nous faire monter en compétence sur le JavaScript avancé.",
+        "Pour les données nous utilisons un api. Pour la gestion du versionning nous utilisons gitHub."
+      
+      ],
+    ],
+    [
+      "Contact",
+      [
+        " <a href='https://www.linkedin.com/in/benjamin-guillemin-57704624b/'>Benjamin Guillemin</a> et <a href='https://www.linkedin.com/in/matthieu-delmont/'>Matthieu Delmont</a>",
+        " <a href='https://github.com/MDelmont/heroes_fighter'>GitHub</a> : <a href='https://github.com/MDelmont/heroes_fighter'>https://github.com/MDelmont/heroes_fighter</a>",
       ],
     ],
   ];
@@ -54,7 +63,7 @@ const makeContentTitleParagraph = (title, Paragraphs) => {
 
   Paragraphs.forEach((Paragraph) => {
     const parahraphContent = document.createElement("p");
-    parahraphContent.textContent = Paragraph;
+    parahraphContent.innerHTML = Paragraph;
     listElement.push(parahraphContent);
   });
 

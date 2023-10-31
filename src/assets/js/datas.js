@@ -1,6 +1,10 @@
 export let env = require("../../data/auth.json");
 export let datas;
 
+/**
+ * get data from api
+ * @returns
+ */
 export const data = async () => {
   return fetch(`https://superheroapi.com/api.php/${env.token}/search/a`, {
     method: "GET",
@@ -16,6 +20,11 @@ export const data = async () => {
     });
 };
 
+/**
+ *
+ * @param {String} name race | editeur | name
+ * @returns {object} list of filter
+ */
 export const takeList = (name) => {
   const list = new Set();
 
@@ -33,12 +42,17 @@ export const takeList = (name) => {
 
   let resultList = Array.from(list);
 
-  if (name === "name") resultList.unshift([ , ]);
+  if (name === "name") resultList.unshift([,]);
   else resultList.unshift(null);
 
   return resultList;
 };
 
+/**
+ *
+ * @param {integer} id
+ * @returns {string} url image if exist
+ */
 export const characterImage = async (id) => {
   return fetch(`https://superheroapi.com/api.php/${env.token}/${id}/image`, {
     method: "GET",
@@ -68,10 +82,10 @@ export const takecharacterByID = (id) => {
 
 /**
  *  Update img for select part
- * @param {String} selectedValue 
- * @param {Integer} selectedOptionId 
- * @param {String} img 
- * @returns 
+ * @param {String} selectedValue
+ * @param {Integer} selectedOptionId
+ * @param {String} img
+ * @returns
  */
 export const updateImageSource = (selectedValue, selectedOptionId, img) => {
   if (selectedValue === "") return img.classList.add("d-none");
