@@ -8,11 +8,19 @@ import { createElementWithProps } from "./utils";
 
 let isMakePage = false;
 
+/**
+ * create Main div
+ */
 export const createMain = () => {
   const main = createElementWithProps("main", { id: "content" });
   document.body.appendChild(main);
 };
 
+/**
+ * Create logic content main
+ * @param {String} page
+ * @returns
+ */
 export const createContentMain = (page = "heroes fighter") => {
   if (isMakePage) return;
 

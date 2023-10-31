@@ -12,8 +12,9 @@ export const eventListenerButtonChoiceHeroes = (buttonselectHeroes) => {
         navBtn.classList.remove("active");
         if (navBtn.textContent == "Characters") navBtn.classList.add("active");
   
-        createContentMain("characters");
+        
       });
+      createContentMain("characters");
     });
   };
   
