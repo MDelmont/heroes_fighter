@@ -1,4 +1,4 @@
-export let env = require("../../data/auth.json");
+export const env = require("../../data/auth.json");
 export let datas;
 
 /**
@@ -33,11 +33,6 @@ export const data = async () => {
   const uniqueData = dataTemps.flat().filter((value, index, self) => {
     return self.findIndex((obj) => obj.id === value.id) === index;
   });
-
-  const ids = uniqueData.map((o) => {
-    return o.id;
-  });
-
   datas = { results: uniqueData };
 };
 
