@@ -24,10 +24,10 @@ export const eventListenerSelectHeroes = (selectHero) => {
 
     switch (parentId) {
       case "select-heroes-1":
-        sethero1(takecharacterByID(selectedOptionId));
+        sethero1(takecharacterByID(selectedOptionId ));
         break;
       case "select-heroes-2":
-        sethero2(takecharacterByID(selectedOptionId));
+        sethero2(takecharacterByID(selectedOptionId ));
         break;
       default:
         break;

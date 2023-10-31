@@ -1,5 +1,5 @@
 import { takeList } from "../datas";
-import {eventListenerSelectHeroes} from "../listeners/eventListenerSelectHeroes";
+import { eventListenerSelectHeroes } from "../listeners/eventListenerSelectHeroes";
 import { eventListenerButtonGoCharacter } from "../listeners/eventListenerGoCharacter";
 import { getStatsgame } from "../game";
 import { createElementWithProps } from "../utils";
@@ -25,10 +25,13 @@ export const selectHeroesPart = () => {
 
   let select1 = makeSelectCont(id1, imgUrl1);
   select1.id = "select-heroes-1";
-  let versus = document.createElement("div");
-  versus.className = "versus";
-  let text = document.createElement("p");
-  text.textContent = "VS";
+  const versus = createElementWithProps("div", {
+    className: "versus",
+  });
+  const text = createElementWithProps("p", {
+    textContent: "VS",
+  });
+
   versus.appendChild(text);
 
   const select2 = makeSelectCont(id2, imgUrl2);
@@ -85,7 +88,7 @@ const makeSelectCont = (id = null, imgUrl = null) => {
     select.appendChild(option);
   });
 
-  if (id) select.selectedIndex = id - 1;
+  if (id) select.selectedIndex = id;
 
   const img = createElementWithProps("img", {
     className: imgUrl ? "img-heroes " : "img-heroes d-none",
