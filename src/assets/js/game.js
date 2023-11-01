@@ -1,6 +1,7 @@
 import {} from "./versusPage/versusPage";
 export let hero1;
 export let hero2;
+
 let stepGame = "init"; //init,start,tests,finish
 let scorePlayer1 = 0;
 let scorePlayer2 = 0;
@@ -21,7 +22,7 @@ const gameStats = {
  * getter listGame
  * @returns {object}
  */
-export const getlistGame = () => {
+export const getGameList = () => {
   return listGame;
 };
 /**
@@ -50,14 +51,14 @@ export const getHero2 = () => {
  * setter hero1
  * @param {object} hero 
  */
-export const sethero1 = (hero) => {
+export const setHero1 = (hero) => {
   hero1 = hero;
 };
 /**
  * setter hero2
  * @param {object} hero 
  */
-export const sethero2 = (hero) => {
+export const setHero2 = (hero) => {
   hero2 = hero;
 };
 /**
@@ -72,7 +73,7 @@ export const getstepGame = () => {
  * Reset score and attribute stepGame
  * @param {String} step 
  */
-export const setstepGame = (step) => {
+export const setStepGame = (step) => {
   if (step == "start") {
     scorePlayer1 = 0;
     scorePlayer2 = 0;

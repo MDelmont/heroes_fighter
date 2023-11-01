@@ -1,7 +1,7 @@
 import { createElementWithProps } from "../utils";
 import { getHero1, getHero2 } from "../game.js";
 import { makeHerosCard } from "./heroesCard.js";
-import { eventListenerButtonResetChoiceHeroes } from "../listeners/eventListenerResetChoiceHeroes";
+import { addEventListenerToResetChoiceHeroesButton } from "../listeners/eventListenerResetChoiceHeroes";
 
 /**
  * Crée un bandeau affichant deux héros face à face avec un bouton de réinitialisation.
@@ -26,14 +26,14 @@ export const makeHerosVersus = () => {
   versusSign.appendChild(versusText);
 
   divHeros.appendChild(heroCard1);
-  divHeros.appendChild(versus);
+  divHeros.appendChild(versusSign);
   divHeros.appendChild(heroCard2);
 
   const buttonContainer = createElementWithProps("div", { className: "cont-versus-heroes-button" });
 
   const resetButton = createElementWithProps("button", { innerText: "Reset Heroes", className: "blue", id: "reset-character-btn" });
 
-  eventListenerButtonResetChoiceHeroes(resetButton);
+  addEventListenerToResetChoiceHeroesButton(resetButton);
 
   buttonContainer.append(resetButton);
   divContainer.append(divHeros);

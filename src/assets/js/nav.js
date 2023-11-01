@@ -1,4 +1,4 @@
-import { addEventListenerNav } from "./listeners/eventListenerNav";
+import { addEventListenerToNavigationButton } from "./listeners/eventListenerNav";
 import { createElementWithProps } from "./utils";
 
 /**
@@ -18,7 +18,7 @@ export const createNavBar = () => {
       textContent: title,
     });
     navItem.appendChild(navLink);
-    addEventListenerNav(navItem);
+    addEventListenerToNavigationButton(navItem);
     nav.appendChild(navItem);
   });
 

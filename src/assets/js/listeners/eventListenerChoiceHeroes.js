@@ -1,20 +1,19 @@
 import { createContentMain } from "../main.js";
 
 /**
- * Add listene to button choise heroes
- * @param {HTMLButtonElement} buttonselectHeroes 
+ * Ajoute un écouteur d'événements au bouton de sélection des héros.
+ * Lorsque le bouton est cliqué, le contenu principal est mis à jour pour afficher les personnages.
+ *
+ * @param {HTMLButtonElement} buttonSelectHeroes - Le bouton auquel l'écouteur est attaché.
  */
-export const eventListenerButtonChoiceHeroes = (buttonselectHeroes) => {
-    buttonselectHeroes.addEventListener("click", () => {
-      const navBtns = document.querySelectorAll(".title-page");
-  
-      navBtns.forEach((navBtn) => {
-        navBtn.classList.remove("active");
-        if (navBtn.textContent == "Characters") navBtn.classList.add("active");
-  
-        
-      });
-      createContentMain("characters");
+export const addEventListenerToSelectHeroesButton = (buttonSelectHeroes) => {
+  buttonSelectHeroes.addEventListener("click", () => {
+    const navButtons = document.querySelectorAll(".title-page");
+
+    navButtons.forEach((navButton) => {
+      navButton.classList.toggle("active", navButton.textContent === "Characters");
     });
-  };
-  
+
+    createContentMain("characters");
+  });
+};

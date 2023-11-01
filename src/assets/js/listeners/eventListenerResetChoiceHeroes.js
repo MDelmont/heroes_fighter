@@ -1,17 +1,20 @@
 import { createContentMain } from "../main.js";
 import { resetGame } from "../game.js";
-/**
- *
- * @param {HTMLButtonElement} buttonResetHeroes
- */
-export const eventListenerButtonResetChoiceHeroes = (buttonResetHeroes) => {
-  buttonResetHeroes.addEventListener("click", () => {
-    const navBtns = document.querySelectorAll(".title-page");
 
-    navBtns.forEach((navBtn) => {
-      navBtn.classList.remove("active");
-      if (navBtn.textContent == "Characters") navBtn.classList.add("active");
+/**
+ * Ajoute un écouteur d'événements au bouton de réinitialisation des héros. 
+ * Quand ce bouton est cliqué, il réinitialise le jeu et charge le contenu de la page des personnages.
+ *
+ * @param {HTMLButtonElement} buttonResetHeroes - Le bouton de réinitialisation des choix de héros.
+ */
+export const addEventListenerToResetChoiceHeroesButton = (buttonResetHeroes) => {
+  buttonResetHeroes.addEventListener("click", () => {
+    const navButtons = document.querySelectorAll(".title-page");
+
+    navButtons.forEach((navButton) => {
+      navButton.classList.toggle("active", navButton.textContent === "Characters");
     });
+
     resetGame();
     createContentMain("characters");
   });

@@ -9,7 +9,7 @@ import {
   getStatsgame,
   getHero1,
   getHero2,
-  getgameList,
+  getGameList,
   gettestResult,
   whoWin,
 } from "../game.js";
@@ -42,7 +42,7 @@ export const MakeVersusPage = () => {
   else if (stepGame == "tests") {
     mainContainer.appendChild(makeBandeauCont([makeHerosVersus()]));
 
-    const gameList = getgameList();
+    const gameList = getGameList();
     const testResults = gettestResult();
 
     Object.entries(gameList).forEach(([gameKey, gameName]) => {

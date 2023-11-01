@@ -108,7 +108,7 @@ export const characterImage = async (id) => {
     });
 };
 
-export const takecharacterByID = (id) => {
+export const takeCharacterByID = (id) => {
   return datas.results.filter((character) => {
     if (character.id == id) {
       return character;

@@ -1,6 +1,6 @@
 import { takeList } from "../datas";
-import { eventListenerSelectHeroes } from "../listeners/eventListenerSelectHeroes";
-import { eventListenerButtonGoCharacter } from "../listeners/eventListenerGoCharacter";
+import { addEventListenerToHeroSelection } from "../listeners/eventListenerSelectHeroes";
+import { addEventListenerToGoCharacterButton } from "../listeners/eventListenerGoCharacter";
 import { getStatsgame } from "../game";
 import { createElementWithProps } from "../utils";
 
@@ -60,7 +60,7 @@ export const selectHeroesPart = () => {
   });
 
 
-  eventListenerButtonGoCharacter(button);
+  addEventListenerToGoCharacterButton(button);
   div.appendChild(button);
 
   main.appendChild(div);
@@ -86,7 +86,7 @@ const makeSelectCont = (id = null, imgUrl = null) => {
     className: "select-heroes",
   });
 
-  eventListenerSelectHeroes(select);
+  addEventListenerToHeroSelection(select);
 
   const listOption = takeList("name");
   listOption.forEach((perso) => {

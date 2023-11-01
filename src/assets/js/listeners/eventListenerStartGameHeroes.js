@@ -1,12 +1,15 @@
 import { createContentMain } from "../main.js";
-import { setstepGame, runGameVersus } from "../game.js";
+import { setStepGame, runGameVersus } from "../game.js";
+
 /**
- *
- * @param {HTMLButtonElement} buttonStartGameHeroes
+ * Ajoute un écouteur d'événement sur le bouton pour démarrer le jeu entre les héros.
+ * Initialise le jeu à la phase de tests et affiche la page de confrontation.
+ * 
+ * @param {HTMLButtonElement} buttonStartGameHeroes - Le bouton qui démarre la partie de jeu entre les héros.
  */
 export const eventListenerButtonStartGameHeroes = (buttonStartGameHeroes) => {
   buttonStartGameHeroes.addEventListener("click", () => {
-    setstepGame("tests");
+    setStepGame("tests");
     runGameVersus();
     createContentMain("versus");
   });
