@@ -1,53 +1,43 @@
 import { createElementWithProps } from "../utils";
-import { gethero1, gethero2 } from "../game.js";
+import { getHero1, getHero2 } from "../game.js";
 import { makeHerosCard } from "./heroesCard.js";
 import { eventListenerButtonResetChoiceHeroes } from "../listeners/eventListenerResetChoiceHeroes";
+
 /**
- * Creat headband versus heroes
- * @returns {HTMLElement}
+ * Crée un bandeau affichant deux héros face à face avec un bouton de réinitialisation.
+ * Ce composant est utilisé pour présenter les cartes des héros et un signe "VS" entre eux.
+ * Il inclut également un bouton de réinitialisation pour recommencer le choix des héros.
+ *
+ * @returns {HTMLElement} L'élément HTML contenant la mise en page de confrontation avec les cartes des héros et le bouton de réinitialisation.
  */
 export const makeHerosVersus = () => {
-  const divherosCont = createElementWithProps("div", {
-    className: "part-versus-heroes",
-  });
+  const divContainer = createElementWithProps("div", { className: "part-versus-heroes" });
+  const divHeros = createElementWithProps("div", { className: "cont-versus-heroes" });
 
-  const divHeros = createElementWithProps("div", {
-    className: "cont-versus-heroes",
-  });
+  const hero1 = getHero1();
+  const hero2 = getHero2();
 
-  const hero1 = gethero1();
-  const hero2 = gethero2();
+  const heroCard1 = makeHerosCard(hero1?.name, hero1?.image?.url);
+  const heroCard2 = makeHerosCard(hero2?.name, hero2?.image?.url);
 
-  const card1 = makeHerosCard(hero1?.name, hero1?.image?.url);
-  const card2 = makeHerosCard(hero2?.name, hero2?.image?.url);
+  const versusSign = createElementWithProps("div", { className: "versus" });
+  const versusText = createElementWithProps("p", { textContent: "VS" });
 
-  const versus = createElementWithProps("div", {
-    className: "versus",
-  });
-  const text = createElementWithProps("p", {
-    textContent: "VS",
-  });
+  versusSign.appendChild(versusText);
 
-  versus.appendChild(text);
-
-  divHeros.appendChild(card1);
+  divHeros.appendChild(heroCard1);
   divHeros.appendChild(versus);
-  divHeros.appendChild(card2);
+  divHeros.appendChild(heroCard2);
 
-  const divherosCdivbutton = createElementWithProps("div", {
-    className: "cont-versus-heroes-button",
-  });
+  const buttonContainer = createElementWithProps("div", { className: "cont-versus-heroes-button" });
 
-  const resetbtn = createElementWithProps("button", {
-    innerText: "Reset Heroes",
-    className: "blue",
-    id: "reset-character-btn",
-  });
+  const resetButton = createElementWithProps("button", { innerText: "Reset Heroes", className: "blue", id: "reset-character-btn" });
 
-  eventListenerButtonResetChoiceHeroes(resetbtn);
+  eventListenerButtonResetChoiceHeroes(resetButton);
 
-  divherosCdivbutton.append(resetbtn);
-  divherosCont.append(divHeros);
-  divherosCont.append(divherosCdivbutton);
-  return divherosCont;
+  buttonContainer.append(resetButton);
+  divContainer.append(divHeros);
+  divContainer.append(buttonContainer);
+
+  return divContainer;
 };

@@ -7,62 +7,66 @@ import { makeContTestGameVersus } from "./heroesTestPart.js";
 import { makeContResultAllTest } from "./heroesResultTest.js";
 import {
   getStatsgame,
-  gethero1,
-  gethero2,
-  getlistGame,
+  getHero1,
+  getHero2,
+  getgameList,
   gettestResult,
   whoWin,
 } from "../game.js";
 
 /**
- * Create and append main content versus
+ * Crée et ajoute le contenu principal pour la page de confrontation entre héros.
+ * La structure du contenu change en fonction de l'étape actuelle du jeu.
+ *
+ * @returns {void} Ne retourne rien car elle modifie directement le contenu de la page.
  */
 export const MakeVersusPage = () => {
-  const main = document.querySelector("#content");
-
+  const mainContainer = document.querySelector("#content");
   const stepGame = getStatsgame().stepGame;
+
+  mainContainer.innerHTML = '';
 
   if (stepGame == "init") {
     makeSelectHeroesPart();
-  } else if (stepGame == "start") {
-    main.appendChild(makeBandeauCont([makeHerosVersus()]));
+  } 
+  
+  else if (stepGame == "start") {
+    const startGameButton = createElementWithProps("button", { innerText: "Stats Tests", className: "green", id: "start-game-btn" });
 
-    const startBtn = createElementWithProps("button", {
-      innerText: "Stats Tests",
-      className: "green",
-      id: "start-game-btn",
-    });
+    eventListenerButtonStartGameHeroes(startGameButton);
 
-    eventListenerButtonStartGameHeroes(startBtn);
-    main.appendChild(makeBandeauCont([startBtn]));
-  } else if (stepGame == "tests") {
-    main.appendChild(makeBandeauCont([makeHerosVersus()]));
+    mainContainer.appendChild(makeBandeauCont([makeHerosVersus()]));
+    mainContainer.appendChild(makeBandeauCont([startGameButton]));
+  }
+  
+  else if (stepGame == "tests") {
+    mainContainer.appendChild(makeBandeauCont([makeHerosVersus()]));
 
-    const listGame = getlistGame();
-    const testResult = gettestResult();
+    const gameList = getgameList();
+    const testResults = gettestResult();
 
-    var games = Object.keys(listGame);
-
-    games.forEach((game) => {
-      main.appendChild(
+    Object.entries(gameList).forEach(([gameKey, gameName]) => {
+      mainContainer.appendChild(
         makeBandeauCont([
           makeContTestGameVersus(
-            listGame[game],
-            game,
-            testResult[game],
-            gethero1(),
-            gethero2()
+            gameName,
+            gameKey,
+            testResults[gameKey],
+            getHero1(),
+            getHero2()
           ),
         ])
       );
     });
 
-    main.appendChild(
+    const winner = whoWin();
+    mainContainer.appendChild(
       makeBandeauCont([
-        makeContResultAllTest(whoWin().name, whoWin().image.url, [
-          getStatsgame().scorePlayer1,
-          getStatsgame().scorePlayer2,
-        ]),
+        makeContResultAllTest(
+          winner.name,
+          winner.image.url,
+          [getStatsgame().scorePlayer1, getStatsgame().scorePlayer2]
+        ),
       ])
     );
   }

@@ -1,7 +1,7 @@
 import { createContentMain } from "../main.js";
 import {
-  gethero1,
-  gethero2,
+  getHero1,
+  getHero2,
   setstepGame,
 } from "../game.js";
 /**
@@ -10,7 +10,7 @@ import {
  */
 export const eventListenerButtonGoCharacter = (buttonGoCharacter) => {
   buttonGoCharacter.addEventListener("click", () => {
-    if (!(gethero1() && gethero2()))
+    if (!(getHero1() && getHero2()))
       return alert("Renseigner les héros à faire combattre !");
 
     setstepGame("start");

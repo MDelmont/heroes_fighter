@@ -35,7 +35,7 @@ export const gettestResult = () => {
  * getter hero1
  * @returns {object}
  */
-export const gethero1 = () => {
+export const getHero1 = () => {
   return hero1;
 };
 
@@ -43,7 +43,7 @@ export const gethero1 = () => {
  * getter hero2
  * @returns {object}
  */
-export const gethero2 = () => {
+export const getHero2 = () => {
   return hero2;
 };
 /**

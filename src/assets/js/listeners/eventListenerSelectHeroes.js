@@ -1,8 +1,8 @@
 import { updateImageSource, takecharacterByID } from "../datas";
 
 import {
-  gethero1,
-  gethero2,
+  getHero1,
+  getHero2,
   sethero1,
   sethero2,
   setstepGame,
@@ -35,6 +35,6 @@ export const eventListenerSelectHeroes = (selectHero) => {
 
     updateImageSource(selectedValue, selectedOptionId, img);
 
-    if (gethero1() && gethero2()) setstepGame("start");
+    if (getHero1() && getHero2()) setstepGame("start");
   });
 };

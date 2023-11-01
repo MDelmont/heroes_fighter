@@ -1,20 +1,19 @@
 import { createElementWithProps } from "../utils";
 import { makeBandeauCont } from "../bandeau.js";
 import { eventListenerButtonChoiceHeroes } from "../listeners/eventListenerChoiceHeroes";
+
 /**
- * Create and append Select heroes part
+ * Crée et ajoute une section pour la sélection des héros dans le contenu principal de la page.
+ * Cette fonction crée un bouton qui, une fois cliqué, permet à l'utilisateur de choisir des héros.
+ *
+ * @returns {void} Ne retourne rien car la fonction opère des modifications directement sur le DOM.
  */
 export const makeSelectHeroesPart = () => {
-  const main = document.querySelector("#content");
+  const mainContainer = document.querySelector("#content");
+  const selectHeroesButton = createElementWithProps("button", { innerText: "Select Heroes", className: "red", id: "select-character-btn" });
 
-  const btn = createElementWithProps("button", {
-    innerText: "Select Heroes",
-    className: "red",
-    id: "select-character-btn",
-  });
-  // Add event listener on btn
-  eventListenerButtonChoiceHeroes(btn);
-  const btnCont = makeBandeauCont([btn]);
+  eventListenerButtonChoiceHeroes(selectHeroesButton);
+  const buttonContainer = makeBandeauCont([selectHeroesButton]);
 
-  main.appendChild(btnCont);
+  mainContainer.appendChild(buttonContainer);
 };
