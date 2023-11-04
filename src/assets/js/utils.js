@@ -37,7 +37,6 @@ export const createElementWithProps = (element, options = {}) => {
 
 /**
  * Gère les valeurs nulles en remplaçant "null" par "N/A".
- *
  * @param {string} value - La valeur à vérifier.
  * @returns {string} La valeur traitée.
  */

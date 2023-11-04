@@ -2,7 +2,7 @@ import { addEventListenerToNavigationButton } from "./listeners/eventListenerNav
 import { createElementWithProps } from "./utils";
 
 /**
- * Creation of navigation bar
+ * Crée la bar de navigation avec tout les éléments de la pageTitles
  */
 export const createNavBar = () => {
   const nav = createElementWithProps("nav", { className: "navigation" });
