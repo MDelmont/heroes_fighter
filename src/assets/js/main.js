@@ -9,7 +9,7 @@ import { createElementWithProps } from "./utils";
 let isMakePage = false;
 
 /**
- * create Main div
+ * Créer le main qui contiendra le contenu des pages de l'application.
  */
 export const createMain = () => {
   const main = createElementWithProps("main", { id: "content" });
@@ -17,7 +17,8 @@ export const createMain = () => {
 };
 
 /**
- * Create logic content main
+ * Permet de généré le contenu de main,
+ * Le contenu est choisi en fonction du nom de la page.
  * @param {String} page
  * @returns
  */

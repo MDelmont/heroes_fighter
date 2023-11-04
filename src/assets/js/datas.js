@@ -2,7 +2,9 @@ export const env = require("../../data/auth.json");
 export let datas;
 
 /**
- * get data from api
+ * Requêtes pour chaque lettre de la liste l'API SuperheroAPI, 
+ * puis stocke chaque résultat dans une liste. La liste est filtrée 
+ * pour enlever les doublons, et est envoyée sous forme d'objet.
  * @returns
  */
 export const data = async () => {
@@ -37,7 +39,8 @@ export const data = async () => {
 };
 
 /**
- *
+ * Fonction utilitaire qui permet de console log les id manquer lors de la requêtes et permet donc
+ * de vérifier que les requêtes englobe bien tout les heros.
  * @param {object} uniqueData
  * @returns {object} liste d'ID qui manque
  */
@@ -57,7 +60,8 @@ function findMissingIds(uniqueData) {
 }
 
 /**
- *
+ * Permet de revoyer une list suivant trois paramettre,
+ * cette list est basé sur la data requêté.
  * @param {String} name race | editeur | name
  * @returns {object} list of filter
  */
@@ -85,7 +89,7 @@ export const takeList = (name) => {
 };
 
 /**
- *
+ * Requetes endpoind id/image pour récupéré l'image du super hero, 
  * @param {integer} id
  * @returns {string} url image if exist
  */
@@ -108,6 +112,11 @@ export const characterImage = async (id) => {
     });
 };
 
+/**
+ * Retourne l'object character en fonction de l'id entré en paramettre.
+ * @param {*} id 
+ * @returns 
+ */
 export const takeCharacterByID = (id) => {
   return datas.results.filter((character) => {
     if (character.id == id) {
@@ -117,7 +126,7 @@ export const takeCharacterByID = (id) => {
 };
 
 /**
- *  Update img for select part
+ *  Met à jours l'image du hero.
  * @param {String} selectedValue
  * @param {Integer} selectedOptionId
  * @param {String} img
